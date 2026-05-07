@@ -6,19 +6,19 @@
   <title>A F M Kamrul Ahsan | Ward 7 London</title>
   <style>
     :root {
-      --ink: #171717;
-      --navy: #2a0b0b;
-      --royal: #d71920;
-      --sky: #fff0f1;
-      --gold: #b58b2b;
-      --paper: #fffaf7;
-      --muted: #6b5f5f;
-      --line: rgba(42, 11, 11, 0.13);
-      --white: #ffffff;
-      --shadow: 0 28px 80px rgba(42, 11, 11, 0.16);
-      --soft-shadow: 0 16px 50px rgba(42, 11, 11, 0.09);
-      --radius: 28px;
-    }
+  --ink: #1f1f1f;
+  --navy: #b5121b;
+  --royal: #d71920;
+  --sky: #fff3f4;
+  --gold: #c89a2b;
+  --paper: #fffdfd;
+  --muted: #5f5f5f;
+  --line: rgba(215, 25, 32, 0.12);
+  --white: #ffffff;
+  --shadow: 0 18px 48px rgba(215, 25, 32, 0.12);
+  --soft-shadow: 0 10px 28px rgba(215, 25, 32, 0.08);
+  --radius: 24px;
+}
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -112,35 +112,25 @@
     }
 
     .hero {
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 84% 6%, rgba(215, 25, 32, .18), transparent 34%),
-        linear-gradient(135deg, #fffaf7 0%, #fff1f1 54%, #ffe6e8 100%);
-      border-bottom: 1px solid var(--line);
-    }
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #fffdfd 0%, #fff4f5 100%);
+  border-bottom: 1px solid var(--line);
+}
 
     .hero:before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(16, 31, 70, .06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(16, 31, 70, .06) 1px, transparent 1px);
-      background-size: 64px 64px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,.72), transparent 82%);
-      pointer-events: none;
-    }
+  display: none;
+}
 
     .hero-inner {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1.08fr .92fr;
-      gap: 58px;
-      align-items: center;
-      min-height: 720px;
-      padding: 72px 0;
-    }
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.08fr .92fr;
+  gap: 42px;
+  align-items: center;
+  min-height: 620px;
+  padding: 56px 0 64px;
+}
 
     .eyebrow {
       display: inline-flex;
@@ -162,20 +152,20 @@
     }
 
     h1 {
-      margin: 0;
-      max-width: 790px;
-      color: var(--navy);
-      font-size: clamp(48px, 6vw, 86px);
-      line-height: .92;
-      letter-spacing: -.075em;
-    }
+  margin: 0;
+  max-width: 640px;
+  color: var(--navy);
+  font-size: clamp(42px, 5vw, 72px);
+  line-height: .95;
+  letter-spacing: -.065em;
+}
 
     .hero-copy {
-      max-width: 645px;
-      color: #475569;
-      font-size: 21px;
-      margin: 28px 0 34px;
-    }
+  max-width: 560px;
+  color: #4a4a4a;
+  font-size: 19px;
+  margin: 22px 0 28px;
+}
 
     .actions {
       display: flex;
@@ -208,12 +198,12 @@
     }
 
     .proof {
-      background: rgba(255,255,255,.72);
-      border: 1px solid rgba(15,23,42,.09);
-      border-radius: 18px;
-      padding: 14px 16px;
-      box-shadow: 0 12px 30px rgba(15,23,42,.06);
-    }
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 14px 16px;
+  box-shadow: none;
+}
 
     .proof strong { display: block; color: var(--navy); font-size: 14px; }
     .proof span { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }
@@ -225,22 +215,22 @@
     }
 
     .portrait-card {
-      position: absolute;
-      inset: 20px 0 0 46px;
-      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.72));
-      border: 1px solid rgba(255,255,255,.8);
-      border-radius: 38px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
+  position: absolute;
+  inset: 12px 0 12px 40px;
+  background: #ffffff;
+  border: 1px solid rgba(215, 25, 32, 0.10);
+  border-radius: 30px;
+  box-shadow: var(--soft-shadow);
+  overflow: hidden;
+}
 
     .portrait-placeholder {
-      height: 100%;
-      background:
-        linear-gradient(135deg, rgba(16,31,70,.08), rgba(36,84,214,.16)),
-        url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80') center/cover;
-      filter: saturate(.94) contrast(1.02);
-    }
+  height: 100%;
+  background:
+    linear-gradient(135deg, rgba(215,25,32,.06), rgba(181,18,27,.14)),
+    url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80') center/cover;
+  filter: saturate(.96) contrast(1.01);
+}
 
     .floating-card {
       position: absolute;
@@ -410,14 +400,14 @@
     }
 
     .bio-photo {
-      min-height: 520px;
-      border-radius: 36px;
-      overflow: hidden;
-      background:
-        linear-gradient(135deg, rgba(16,31,70,.08), rgba(36,84,214,.10)),
-        url('https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1000&q=80') center/cover;
-      box-shadow: var(--shadow);
-    }
+  min-height: 520px;
+  border-radius: 36px;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(215,25,32,.06), rgba(181,18,27,.10)),
+    url('https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1000&q=80') center/cover;
+  box-shadow: var(--shadow);
+}
 
     .bio-copy p {
       color: #475569;
@@ -455,16 +445,16 @@
     }
 
     .large-cta {
-      border-radius: 36px;
-      padding: 42px;
-      background: linear-gradient(135deg, var(--royal), #132a68);
-      color: white;
-      box-shadow: var(--shadow);
-      min-height: 360px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
+  border-radius: 36px;
+  padding: 42px;
+  background: linear-gradient(135deg, var(--royal), var(--navy));
+  color: white;
+  box-shadow: var(--shadow);
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
     .large-cta h2 { color: white; }
     .large-cta p { color: rgba(255,255,255,.78); font-size: 18px; max-width: 540px; }
@@ -499,7 +489,16 @@
       box-shadow: var(--soft-shadow);
     }
 
-    .update-card.featured { min-height: 330px; display: flex; flex-direction: column; justify-content: end; background: linear-gradient(135deg, rgba(16,31,70,.94), rgba(36,84,214,.78)), url('https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80') center/cover; color: white; }
+    .update-card.featured {
+  min-height: 330px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  background:
+    linear-gradient(135deg, rgba(181,18,27,.90), rgba(215,25,32,.78)),
+    url('https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80') center/cover;
+  color: white;
+}
     .update-card.featured h3 { color: white; }
     .update-card.featured p, .update-card.featured .date { color: rgba(255,255,255,.76); }
 
@@ -516,10 +515,10 @@
     .update-card p { margin: 0; color: var(--muted); }
 
     .footer {
-      background: #081126;
-      color: white;
-      padding: 58px 0 30px;
-    }
+  background: #8f1220;
+  color: white;
+  padding: 58px 0 30px;
+}
 
     .footer-grid {
       display: grid;
@@ -599,34 +598,46 @@
 
   <main>
     <section class="hero">
-      <div class="container hero-inner">
-        <div>
-          <p class="eyebrow">Campaign for Ward 7</p>
-          <h1>Practical leadership for a stronger Ward 7.</h1>
-          <p class="hero-copy">A local campaign focused on affordability, safer streets, better transit, and a City Hall that listens to residents before decisions are made.</p>
-          <div class="actions">
-            <a href="#involved" class="btn btn-primary">Volunteer with us</a>
-            <a href="#priorities" class="btn btn-light">See priorities</a>
-            <a href="#donate" class="btn btn-dark">Donate</a>
-          </div>
-          <div class="proof-strip">
-            <div class="proof"><strong>Business experience</strong><span>Director, BCB Metal Inc.</span></div>
-            <div class="proof"><strong>Technical background</strong><span>Engineer + Executive MBA</span></div>
-            <div class="proof"><strong>Community service</strong><span>Organizer and volunteer leader</span></div>
-            <div class="proof"><strong>Values signal</strong><span>Progressive, community-first leadership</span></div>
-          </div>
-        </div>
+  <div class="container hero-inner">
+    <div>
+      <p class="eyebrow">Kamrul Ahsan for Ward 7</p>
+      <h1>A stronger Ward 7 starts with listening.</h1>
+      <p class="hero-copy">
+        Safer streets, better transit, practical local leadership, and a City Hall that respects residents.
+      </p>
 
-        <div class="candidate-panel" aria-label="Candidate visual panel">
-          <div class="portrait-card"><div class="portrait-placeholder"></div></div>
-          <div class="mini-badge">Ward 7<span>London</span></div>
-          <div class="floating-card">
-            <h3>A campaign built around listening.</h3>
-            <p>Neighbourhood concerns, practical solutions, and steady leadership at City Hall.</p>
-          </div>
+      <div class="actions">
+        <a href="#involved" class="btn btn-primary">Join the campaign</a>
+        <a href="#contact" class="btn btn-light">Share your concerns</a>
+      </div>
+
+      <div class="proof-strip">
+        <div class="proof">
+          <strong>Resident-focused</strong>
+          <span>Listening before deciding</span>
+        </div>
+        <div class="proof">
+          <strong>Practical leadership</strong>
+          <span>Solutions that can actually be done</span>
+        </div>
+        <div class="proof">
+          <strong>Community roots</strong>
+          <span>Business, organizing, and service</span>
+        </div>
+        <div class="proof">
+          <strong>Ward 7 first</strong>
+          <span>Neighbourhood priorities matter</span>
         </div>
       </div>
-    </section>
+    </div>
+
+    <div class="candidate-panel" aria-label="Candidate visual panel">
+      <div class="portrait-card">
+        <div class="portrait-placeholder"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <div class="announcement">
       <div class="container">
