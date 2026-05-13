@@ -24,89 +24,56 @@
   </div>
 </header>
 
-<section class="volunteer-section">
+<section class="volunteer-hero">
 
-  <h1>Help Shape the Future of Ward 7</h1>
+  <div class="container">
+    <div class="volunteer-wrap">
 
-  <p>
-    This campaign is built by people who live here—not outside consultants or political insiders.
-    If you care about the direction of our community, there’s a place for you on this team.
-  </p>
+      <div class="volunteer-panel">
 
-  <p>
-    Elections at the municipal level are decided by conversations: at the door, on the street,
-    and between neighbours. A few hours of your time can genuinely make the difference.
-  </p>
+        <h2>Join the Campaign</h2>
+        <p>Be part of a grassroots effort to shape the future of Ward 7</p>
 
-  <hr>
+        <form class="volunteer-form" action="https://formspree.io/f/yourID" method="POST">
 
-  <h2>What volunteering looks like</h2>
+          <label>Full Name</label>
+          <input type="text" name="name" required>
 
-  <p>You don’t need political experience. Just a willingness to show up.</p>
+          <label>Email Address</label>
+          <input type="email" name="email" required>
 
-  <ul>
-    <li><strong>Door knocking:</strong> Talking to residents across the ward</li>
-    <li><strong>Phone calls:</strong> Reaching supporters and undecided voters</li>
-    <li><strong>Events:</strong> Helping organize and run local meetups</li>
-    <li><strong>Community outreach:</strong> Connecting with neighbours and local groups</li>
-    <li><strong>Logistics:</strong> Lawn signs, setup, and behind-the-scenes support</li>
-  </ul>
+          <label>Phone Number</label>
+          <input type="tel" name="phone">
 
-  <hr>
+          <label>What part of the ward do you live in?</label>
+          <input type="text" name="location">
 
-  <h2>Why this matters</h2>
+          <label>How would you like to help?</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="help" value="Door Knocking"> Door Knocking</label>
+            <label><input type="checkbox" name="help" value="Phone Calls"> Phone Calls</label>
+            <label><input type="checkbox" name="help" value="Events"> Events</label>
+            <label><input type="checkbox" name="help" value="Outreach"> Community Outreach</label>
+            <label><input type="checkbox" name="help" value="Logistics"> Lawn Signs</label>
+          </div>
 
-  <p>
-    Municipal decisions affect your daily life—housing, transit, infrastructure, and how our neighbourhoods grow.
-    This is one of the few places where a small group of committed people can have a real, immediate impact.
-  </p>
+          <label>Availability</label>
+          <select name="availability">
+            <option>Weekday evenings</option>
+            <option>Weekends</option>
+            <option>Flexible</option>
+          </select>
 
-  <p>
-    If you’ve ever felt like local politics happens without you, this is your chance to change that.
-  </p>
+          <label>Anything you'd like us to add?</label>
+          <textarea name="message"></textarea>
 
-  <hr>
+          <button type="submit">Join the Campaign</button>
 
-  <h2>Sign up to get involved</h2>
+        </form>
 
-  <p>
-    Fill out the form below and we’ll reach out with next steps.
-    Even a few hours helps.
-  </p>
+      </div>
 
-  <form action="https://formspree.io/f/yourID" method="POST">
-
-    <label>Full Name</label><br>
-    <input type="text" name="name" required><br><br>
-
-    <label>Email Address</label><br>
-    <input type="email" name="email" required><br><br>
-
-    <label>Phone Number</label><br>
-    <input type="tel" name="phone"><br><br>
-
-    <label>What part of Ward 7 do you live in?</label><br>
-    <input type="text" name="location" placeholder="e.g. Westmount, White Oaks"><br><br>
-
-    <label>How would you like to help?</label><br>
-    <input type="checkbox" name="help" value="Door Knocking"> Door Knocking<br>
-    <input type="checkbox" name="help" value="Phone Calls"> Phone Calls<br>
-    <input type="checkbox" name="help" value="Events"> Events<br>
-    <input type="checkbox" name="help" value="Outreach"> Community Outreach<br>
-    <input type="checkbox" name="help" value="Logistics"> Logistics / Lawn Signs<br><br>
-
-    <label>When are you usually available?</label><br>
-    <select name="availability">
-      <option>Weekday evenings</option>
-      <option>Weekends</option>
-      <option>Flexible</option>
-    </select><br><br>
-
-    <label>Anything you’d like us to know?</label><br>
-    <textarea name="message"></textarea><br><br>
-
-    <button type="submit">Join the Campaign</button>
-
-  </form>
+    </div>
+  </div>
 
 </section>
