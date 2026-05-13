@@ -563,3 +563,103 @@
       section { padding: 64px 0; }
       .large-cta { padding: 30px; }
     }
+
+/* === HERO-STYLE VOLUNTEER SECTION === */
+
+.volunteer-hero {
+  background: linear-gradient(180deg, #fffdfd 0%, #fff4f5 100%);
+  border-bottom: 1px solid var(--line);
+  padding: 100px 0;
+}
+
+.volunteer-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* Panel styled like your portrait card */
+.volunteer-panel {
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(215, 25, 32, 0.12);
+  border-radius: 30px;
+  padding: 36px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+/* Typography closer to hero */
+.volunteer-panel h2 {
+  font-size: 34px;
+  letter-spacing: -.04em;
+  margin-bottom: 10px;
+}
+
+.volunteer-panel p {
+  font-size: 16px;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+/* Inputs – softer, more premium */
+.volunteer-form input,
+.volunteer-form textarea,
+.volunteer-form select {
+  width: 100%;
+  padding: 14px;
+  margin-top: 6px;
+  border-radius: 14px;
+  border: 1px solid rgba(215, 25, 32, 0.18);
+  background: #fffdfd;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.volunteer-form input:focus,
+.volunteer-form textarea:focus,
+.volunteer-form select:focus {
+  outline: none;
+  border-color: var(--royal);
+  box-shadow: 0 0 0 3px rgba(215, 25, 32, 0.12);
+}
+
+/* Labels */
+.volunteer-form label {
+  font-weight: 700;
+  margin-top: 18px;
+  display: block;
+}
+
+/* Checkbox group refined */
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+.checkbox-group input {
+  accent-color: var(--royal);
+}
+
+/* Button – matches hero CTAs */
+.volunteer-form button {
+  margin-top: 26px;
+  width: 100%;
+  padding: 15px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, var(--royal), var(--navy));
+  color: white;
+  font-weight: 900;
+  font-size: 15px;
+  letter-spacing: .02em;
+  cursor: pointer;
+  box-shadow: 0 18px 44px rgba(36,84,214,.28);
+  transition: all 0.2s ease;
+}
+
+.volunteer-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 50px rgba(36,84,214,.34);
+}
