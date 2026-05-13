@@ -630,16 +630,18 @@
 }
 
 /* Checkbox group refined */
+.checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 20px;
+  margin-top: 10px;
+}
+
 .checkbox-group label {
   display: flex;
   align-items: center;
   gap: 10px;
   font-weight: 500;
-  margin-top: 8px;
-}
-
-.checkbox-group input {
-  accent-color: var(--royal);
 }
 
 /* Button – matches hero CTAs */
