@@ -631,18 +631,22 @@
 
 /* Checkbox group refined */
 .checkbox-group {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px 20px;
   margin-top: 10px;
 }
 
 .checkbox-group label {
   display: flex;
   align-items: center;
+  justify-content: flex-start; /* IMPORTANT */
   gap: 10px;
   font-weight: 500;
+  margin-top: 8px;
+  width: fit-content; /* prevents stretching */
 }
+
+.checkbox-group input {
+  width: auto;
+  accent-color: var(--royal);
 
 /* Button – matches hero CTAs */
 .volunteer-form button {
