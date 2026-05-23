@@ -24,67 +24,109 @@
   </div>
 </header>
 
-<form class="volunteer-form"
-      action="https://formspree.io/f/yourID"
-      method="POST">
+<section class="volunteer-hero">
 
-  <label>Full Name (optional)</label>
-  <input type="text" name="name">
+  <div class="container">
 
-  <label>Email Address (optional)</label>
-  <input type="email" name="email">
+    <!-- CENTERING FIX -->
+    <div style="max-width: 720px; margin: 0 auto;">
 
-  <label>What part of the ward are you in?</label>
-  <input type="text" name="location" placeholder="e.g. White Oaks, Westmount">
+      <div class="volunteer-panel">
 
-  <label>What issue are you facing?</label>
-  <textarea name="concern" rows="5" required></textarea>
+        <h2>What Are You Seeing in Your Neighborhood?</h2>
 
-  <label>How long has this been a problem?</label>
-  <select name="duration">
-    <option>Recently (last few weeks)</option>
-    <option>A few months</option>
-    <option>Over a year</option>
-  </select>
+        <p style="margin-bottom: 18px;">
+          I’m speaking with residents across Ward 7 to better understand
+          the issues people are facing. If something is affecting you or your
+          neighborhood, I’d like to hear about it.
+        </p>
 
-  <label>How many people does this affect?</label>
-  <select name="scale">
-    <option>Just me</option>
-    <option>A few people</option>
-    <option>My neighborhood</option>
-    <option>Large part of the ward</option>
-  </select>
+        <p style="font-size:14px; color:var(--muted); margin-bottom:24px;">
+          You can submit anonymously if you prefer.
+        </p>
 
-  <label>Category</label>
-  <select name="category">
-    <option>Housing</option>
-    <option>Transit</option>
-    <option>Public Safety</option>
-    <option>Roads & Infrastructure</option>
-    <option>Parks & Environment</option>
-    <option>Other</option>
-  </select>
+        <form class="volunteer-form"
+              action="https://formspree.io/f/yourID"
+              method="POST">
 
-  <label>How urgent is this issue?</label>
-  <select name="urgency">
-    <option>Not urgent</option>
-    <option>Somewhat urgent</option>
-    <option>Urgent</option>
-  </select>
+          <!-- BASIC INFO -->
+          <h3 style="margin-top:10px;">Basic Information</h3>
 
-  <label>Have you reported this issue to the city before?</label>
-  <select name="reported">
-    <option>No</option>
-    <option>Yes, but nothing changed</option>
-    <option>Yes, and it was resolved</option>
-  </select>
+          <label>Full Name (optional)</label>
+          <input type="text" name="name">
 
-  <label>Can we follow up with you?</label>
-  <select name="followup">
-    <option>Yes</option>
-    <option>No</option>
-  </select>
+          <label>Email Address (optional)</label>
+          <input type="email" name="email">
 
-  <button type="submit">Submit Concern</button>
 
-</form>
+          <!-- LOCATION -->
+          <h3 style="margin-top:28px;">Your Area</h3>
+
+          <label>What part of the ward are you in?</label>
+          <input type="text" name="location" placeholder="e.g. White Oaks, Westmount">
+
+
+          <!-- ISSUE -->
+          <h3 style="margin-top:28px;">The Issue</h3>
+
+          <label>What issue are you facing?</label>
+          <textarea name="concern" rows="5" required></textarea>
+
+          <label>How long has this been a problem?</label>
+          <select name="duration">
+            <option>Recently (last few weeks)</option>
+            <option>A few months</option>
+            <option>Over a year</option>
+          </select>
+
+
+          <!-- CONTEXT -->
+          <h3 style="margin-top:28px;">Context</h3>
+
+          <label>How many people does this affect?</label>
+          <select name="scale">
+            <option>Just me</option>
+            <option>A few people</option>
+            <option>My neighborhood</option>
+            <option>Large part of the ward</option>
+          </select>
+
+          <label>Category</label>
+          <select name="category">
+            <option>Housing</option>
+            <option>Transit</option>
+            <option>Public Safety</option>
+            <option>Roads & Infrastructure</option>
+            <option>Parks & Environment</option>
+            <option>Other</option>
+          </select>
+
+          <label>Have you reported this issue to the city before?</label>
+          <select name="reported">
+            <option>No</option>
+            <option>Yes, but nothing changed</option>
+            <option>Yes, and it was resolved</option>
+          </select>
+
+          <label>Can we follow up with you?</label>
+          <select name="followup">
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+
+          <button type="submit" class="btn btn-primary" style="margin-top:28px;">
+            Submit Concern
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+</body>
+</html>
