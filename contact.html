@@ -24,20 +24,67 @@
   </div>
 </header>
 
-<section class="container" style="padding:80px 0;">
-  <h1>Contact the Campaign</h1>
+<form class="volunteer-form"
+      action="https://formspree.io/f/yourID"
+      method="POST">
 
-  <p>Share your concerns, ask questions, or tell us what matters most to you in Ward 7.</p>
+  <label>Full Name (optional)</label>
+  <input type="text" name="name">
 
-  <a class="btn btn-primary" href="YOUR_CONTACT_FORM_LINK" target="_blank">
-    Share a Local Issue
-  </a>
+  <label>Email Address (optional)</label>
+  <input type="email" name="email">
 
-  <p style="margin-top:30px;">
-    Or email us directly:<br>
-    <strong>info@kamrulahsan.ca</strong>
-  </p>
-</section>
+  <label>What part of the ward are you in?</label>
+  <input type="text" name="location" placeholder="e.g. White Oaks, Westmount">
 
-</body>
-</html>
+  <label>What issue are you facing?</label>
+  <textarea name="concern" rows="5" required></textarea>
+
+  <label>How long has this been a problem?</label>
+  <select name="duration">
+    <option>Recently (last few weeks)</option>
+    <option>A few months</option>
+    <option>Over a year</option>
+  </select>
+
+  <label>How many people does this affect?</label>
+  <select name="scale">
+    <option>Just me</option>
+    <option>A few people</option>
+    <option>My neighborhood</option>
+    <option>Large part of the ward</option>
+  </select>
+
+  <label>Category</label>
+  <select name="category">
+    <option>Housing</option>
+    <option>Transit</option>
+    <option>Public Safety</option>
+    <option>Roads & Infrastructure</option>
+    <option>Parks & Environment</option>
+    <option>Other</option>
+  </select>
+
+  <label>How urgent is this issue?</label>
+  <select name="urgency">
+    <option>Not urgent</option>
+    <option>Somewhat urgent</option>
+    <option>Urgent</option>
+  </select>
+
+  <label>Have you reported this issue to the city before?</label>
+  <select name="reported">
+    <option>No</option>
+    <option>Yes, but nothing changed</option>
+    <option>Yes, and it was resolved</option>
+  </select>
+
+  <label>Can we follow up with you?</label>
+  <select name="followup">
+    <option>Yes</option>
+    <option>No</option>
+  </select>
+
+  <button type="submit">Submit Concern</button>
+
+</form>
