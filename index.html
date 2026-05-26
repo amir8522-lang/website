@@ -543,35 +543,102 @@
     }
 
     @media (max-width: 960px) {
-      .topbar { display: none; }
-      .nav-links a:not(.pill) { display: none; }
-      .hero-inner, .bio-wrap, .involved-grid, .updates-grid { grid-template-columns: 1fr; }
-      .candidate-panel { min-height: 540px; }
-      .portrait-card { left: 20px; }
-      .priority-grid { grid-template-columns: 1fr; }
-      .section-head { display: block; }
-      .section-head p { margin-top: 16px; }
-      .announcement .container { grid-template-columns: 1fr; }
-      .credentials { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .legal { flex-direction: column; }
-    }
+  .topbar { display: none; }
+  .nav-links a:not(.pill) { display: none; }
 
-    @media (max-width: 620px) {
-      .container { width: min(100% - 28px, 1180px); }
-      .nav { height: 68px; }
-      .brand { font-size: 18px; }
-      .brand-mark { width: 38px; height: 38px; }
-      .hero-inner { min-height: auto; padding: 52px 0; }
-      h1 { font-size: 48px; }
-      .hero-copy { font-size: 18px; }
-      .proof-strip { grid-template-columns: 1fr; }
-      .candidate-panel { display: none; }
-      section { padding: 64px 0; }
-      .large-cta { padding: 30px; }
+  /* Keep clean stacking but not ugly */
+  .hero-inner,
+  .bio-wrap,
+  .involved-grid,
+  .updates-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* KEEP IMAGE VISIBLE */
+  .candidate-panel {
+    min-height: 400px;
+    margin-top: 20px;
+  }
+
+  .portrait-card {
+    position: relative;
+    inset: 0;
+    border-radius: 20px;
+  }
+
+  .priority-grid { grid-template-columns: 1fr; }
+
+  .section-head { display: block; }
+  .section-head p { margin-top: 16px; }
+
+  .announcement .container { grid-template-columns: 1fr; }
+
+  .credentials { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .legal { flex-direction: column; }
+
+  /* FIX IMAGE SECTIONS */
+  .bio-photo {
+    min-height: 320px;
+  }
+
+  .large-cta {
+    min-height: 240px;
+  }
+
+  .update-card.featured {
+    min-height: 260px;
+  }
+}
+
+
+@media (max-width: 620px) {
+  .container { width: min(100% - 28px, 1180px); }
+
+  .nav { height: 68px; }
+  .brand { font-size: 18px; }
+  .brand-mark { width: 38px; height: 38px; }
+
+  .hero-inner {
+    min-height: auto;
+    padding: 52px 0;
+    gap: 24px;
+  }
+
+  h1 { font-size: 48px; }
+  .hero-copy { font-size: 18px; }
+
+  /* Better layout instead of 1 long column */
+  .proof-strip {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* 🔴 THIS IS THE BIG FIX — DO NOT HIDE IMAGE */
+  .candidate-panel {
+    display: block;
+    min-height: 300px;
+  }
+
+  section { padding: 64px 0; }
+
+  .large-cta {
+    padding: 24px;
+    min-height: 220px;
+  }
+
+  .bio-photo {
+    min-height: 260px;
+  }
+
+  .update-card.featured {
+    min-height: 240px;
+  }
+}
+      
     }
   </style>
 </head>
+  
 <body>
   <div class="topbar">
     <div class="container">
