@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Platform — Ward 7 City Council 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C8102E;
+    --red-dark: #9B0C22;
+    --cream: #F5F0E8;
+    --dark: #1A1A1A;
+    --mid: #3A3A3A;
+    --muted: #7A7060;
+    --accent: #E8D5A3;
+    --border: rgba(200,16,46,0.15);
+    --section-bg: #F9F5EE;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--dark);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--dark);
+    color: var(--cream);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 80px,
+        rgba(200,16,46,0.04) 80px,
+        rgba(200,16,46,0.04) 81px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 80px,
+        rgba(200,16,46,0.04) 80px,
+        rgba(200,16,46,0.04) 81px
+      );
+    pointer-events: none;
+  }
+
+  .hero-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 60px;
+    border-bottom: 1px solid rgba(245,240,232,0.08);
+    position: relative;
+    z-index: 10;
+  }
+
+  .ward-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(200,16,46,0.2);
+    border: 1px solid rgba(200,16,46,0.4);
+    padding: 6px 14px;
+    border-radius: 2px;
+  }
+
+  .election-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: rgba(245,240,232,0.4);
+    text-transform: uppercase;
+  }
+
+  .hero-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 60px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 24px;
+  }
+
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(52px, 8vw, 112px);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    margin-bottom: 36px;
+  }
+
+  .hero-name span {
+    display: block;
+    color: var(--red);
+    font-style: italic;
+  }
+
+  .hero-tagline {
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: 300;
+    color: rgba(245,240,232,0.7);
+    max-width: 540px;
+    line-height: 1.6;
+    border-left: 2px solid var(--red);
+    padding-left: 20px;
+  }
+
+  .hero-bottom {
+    padding: 40px 60px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 10;
+    border-top: 1px solid rgba(245,240,232,0.06);
+  }
+
+  .stat-pill {
+    background: rgba(245,240,232,0.06);
+    border: 1px solid rgba(245,240,232,0.12);
+    padding: 10px 18px;
+    border-radius: 2px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: rgba(245,240,232,0.5);
+    text-transform: uppercase;
+  }
+
+  .stat-pill strong {
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* ── INTRO ── */
+  .intro-section {
+    background: var(--red);
+    color: var(--cream);
+    padding: 80px 60px;
+  }
+
+  .intro-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: clamp(28px, 4vw, 48px);
+    line-height: 1.15;
+    margin-bottom: 32px;
+    max-width: 860px;
+  }
+
+  .intro-section p {
+    font-size: 17px;
+    line-height: 1.75;
+    max-width: 720px;
+    opacity: 0.9;
+  }
+
+  .intro-section p + p { margin-top: 16px; }
+
+  .data-callout {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2px;
+    background: rgba(0,0,0,0.15);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .data-callout-item {
+    background: rgba(0,0,0,0.12);
+    padding: 28px 24px;
+  }
+
+  .data-callout-item .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--accent);
+  }
+
+  .data-callout-item .label {
+    font-size: 13px;
+    font-weight: 500;
+    margin-top: 8px;
+    opacity: 0.85;
+    line-height: 1.4;
+  }
+
+  .data-callout-item .source {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    opacity: 0.5;
+    margin-top: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 100px 60px;
+    border-bottom: 1px solid rgba(26,26,26,0.08);
+  }
+
+  .section:nth-child(even) {
+    background: var(--section-bg);
+  }
+
+  .section-header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 40px;
+    align-items: start;
+    margin-bottom: 64px;
+  }
+
+  .section-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    font-weight: 900;
+    line-height: 0.85;
+    color: rgba(200,16,46,0.12);
+    letter-spacing: -0.04em;
+    user-select: none;
+    margin-top: -8px;
+  }
+
+  .section-title-group {}
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 3.5vw, 42px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--dark);
+  }
+
+  .section-subtitle {
+    margin-top: 14px;
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 580px;
+    line-height: 1.65;
+  }
+
+  .policy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .policy-card {
+    background: white;
+    border: 1px solid rgba(26,26,26,0.08);
+    padding: 36px 32px;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .policy-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(26,26,26,0.10);
+  }
+
+  .policy-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--red);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .policy-card:hover::before { transform: scaleX(1); }
+
+  .card-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(200,16,46,0.08);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.25;
+  }
+
+  .card-body {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--mid);
+  }
+
+  .card-evidence {
+    margin-top: 16px;
+    padding: 12px 14px;
+    background: rgba(200,16,46,0.04);
+    border-left: 2px solid var(--red);
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  /* ── FLAGSHIP: GROCERY ── */
+  .flagship {
+    background: var(--dark);
+    color: var(--cream);
+    padding: 100px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .flagship::before {
+    content: 'COMMUNITY\AGROCERY';
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    font-family: 'Playfair Display', serif;
+    font-size: 120px;
+    font-weight: 900;
+    opacity: 0.04;
+    white-space: nowrap;
+    pointer-events: none;
+    color: var(--cream);
+    letter-spacing: -0.05em;
+  }
+
+  .flagship-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    position: relative;
+    z-index: 2;
+  }
+
+  .flagship-left .fl-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .flagship-left h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 4vw, 52px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 28px;
+  }
+
+  .flagship-left h2 em {
+    color: var(--red);
+    font-style: italic;
+  }
+
+  .flagship-left p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: rgba(245,240,232,0.75);
+    margin-bottom: 16px;
+  }
+
+  .flagship-right {}
+
+  .how-it-works {
+    margin-bottom: 36px;
+  }
+
+  .how-it-works h3 {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+
+  .step {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(245,240,232,0.06);
+  }
+
+  .step:last-child { border-bottom: none; }
+
+  .step-num {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: var(--red);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 2px;
+    margin-top: 2px;
+  }
+
+  .step-text h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--cream);
+  }
+
+  .step-text p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: rgba(245,240,232,0.55);
+    margin: 0;
+  }
+
+  .comparisons-box {
+    background: rgba(245,240,232,0.04);
+    border: 1px solid rgba(245,240,232,0.10);
+    padding: 24px;
+    border-radius: 2px;
+  }
+
+  .comparisons-box h3 {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .comparisons-box p {
+    font-size: 13px;
+    line-height: 1.65;
+    color: rgba(245,240,232,0.6);
+    margin: 0 0 10px 0;
+  }
+
+  .comparisons-box p:last-child { margin: 0; }
+
+  /* ── BUDGET REALITY ── */
+  .budget-reality {
+    background: white;
+    padding: 100px 60px;
+  }
+
+  .budget-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    margin-top: 60px;
+  }
+
+  .budget-item {
+    padding: 32px;
+    border: 1px solid rgba(26,26,26,0.08);
+    position: relative;
+  }
+
+  .budget-item.problem {
+    border-color: rgba(200,16,46,0.2);
+    background: rgba(200,16,46,0.02);
+  }
+
+  .budget-item.solution {
+    border-color: rgba(26,26,26,0.12);
+    background: rgba(245,240,232,0.5);
+  }
+
+  .budget-item-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    margin-bottom: 16px;
+    display: inline-block;
+  }
+
+  .budget-item.problem .budget-item-tag {
+    background: var(--red);
+    color: white;
+  }
+
+  .budget-item.solution .budget-item-tag {
+    background: var(--dark);
+    color: var(--cream);
+  }
+
+  .budget-item h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .budget-item p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--mid);
+  }
+
+  .budget-item .dollar {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--red);
+    margin-top: 12px;
+    font-weight: 500;
+  }
+
+  /* ── VISION STATEMENT ── */
+  .vision {
+    background: var(--cream);
+    padding: 120px 60px;
+    text-align: center;
+    position: relative;
+  }
+
+  .vision-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3.5vw, 44px);
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1.25;
+    max-width: 900px;
+    margin: 0 auto 40px;
+    color: var(--dark);
+  }
+
+  .vision-quote strong {
+    color: var(--red);
+    font-style: normal;
+  }
+
+  .vision-attribution {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── PRIORITIES LIST ── */
+  .priorities-section {
+    padding: 100px 60px;
+    background: var(--section-bg);
+  }
+
+  .priorities-list {
+    margin-top: 60px;
+    counter-reset: priority;
+  }
+
+  .priority-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 32px;
+    align-items: start;
+    padding: 40px 0;
+    border-bottom: 1px solid rgba(26,26,26,0.08);
+    counter-increment: priority;
+  }
+
+  .priority-item:last-child { border-bottom: none; }
+
+  .priority-counter {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--red);
+    letter-spacing: 0.1em;
+    margin-top: 6px;
+  }
+
+  .priority-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .priority-content p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--mid);
+    max-width: 680px;
+  }
+
+  .priority-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: rgba(200,16,46,0.08);
+    color: var(--red);
+    padding: 4px 10px;
+    border-radius: 2px;
+    white-space: nowrap;
+    margin-top: 4px;
+    height: fit-content;
+  }
+
+  /* ── FOOTER CTA ── */
+  .footer-cta {
+    background: var(--red);
+    color: var(--cream);
+    padding: 100px 60px;
+    text-align: center;
+  }
+
+  .footer-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 64px);
+    font-weight: 900;
+    margin-bottom: 20px;
+    line-height: 1.1;
+  }
+
+  .footer-cta p {
+    font-size: 18px;
+    opacity: 0.85;
+    max-width: 560px;
+    margin: 0 auto 40px;
+    line-height: 1.65;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 16px 36px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+  }
+
+  .btn-light {
+    background: var(--cream);
+    color: var(--red);
+  }
+
+  .btn-light:hover {
+    background: var(--accent);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid rgba(245,240,232,0.4);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--cream);
+    background: rgba(245,240,232,0.08);
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in:nth-child(1) { animation-delay: 0.1s; }
+  .fade-in:nth-child(2) { animation-delay: 0.25s; }
+  .fade-in:nth-child(3) { animation-delay: 0.4s; }
+  .fade-in:nth-child(4) { animation-delay: 0.55s; }
+
+  /* ── BUDGET FOOTNOTE BAR ── */
+  .footnote-bar {
+    background: var(--dark);
+    color: rgba(245,240,232,0.4);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    padding: 16px 60px;
+    text-align: center;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-topbar, .hero-main, .hero-bottom,
+    .intro-section, .section, .flagship,
+    .budget-reality, .vision, .priorities-section, .footer-cta {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+    .flagship-inner { grid-template-columns: 1fr; gap: 48px; }
+    .budget-grid { grid-template-columns: 1fr; }
+    .section-header { grid-template-columns: 1fr; }
+    .section-num { font-size: 56px; }
+    .hero-topbar { padding: 20px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-topbar">
+    <span class="ward-badge">Ward 7 · London, Ontario · 2026</span>
+    <span class="election-date">Election Day: October 26, 2026</span>
+  </div>
+
+  <div class="hero-main">
+    <p class="eyebrow fade-in">My Platform</p>
+    <h1 class="hero-name fade-in">
+      A Ward 7<br><span>Built for Everyone.</span>
+    </h1>
+    <p class="hero-tagline fade-in">
+      Real affordability. Community-owned food. Accountable spending. 
+      I'm running for City Council because Ward 7 deserves a voice 
+      that actually reflects how people here live.
+    </p>
+  </div>
+
+  <div class="hero-bottom">
+    <div class="stat-pill"><strong>1 in 3</strong> London households face food insecurity</div>
+    <div class="stat-pill"><strong>3.4%</strong> property tax hike in 2026</div>
+    <div class="stat-pill"><strong>$926M</strong> collected in property taxes this year</div>
+    <div class="stat-pill"><strong>7%</strong> avg fee hike on recreation programs</div>
+  </div>
+</section>
+
+<!-- ── INTRO ── -->
+<section class="intro-section">
+  <h2>The City is making choices with your money — right now. Here's what I've found.</h2>
+  <p>
+    I've read the 2026 Annual Budget Update for the City of London — all 270 pages. The numbers tell a clear story: property taxes are climbing every year, recreation fees are going up by an average of 7%, and the city just eliminated its Climate Change Reserve Fund contribution to save $192,000. Meanwhile, nearly one in three households in London can't reliably afford food.
+  </p>
+  <p>
+    Our ward deserves a councillor who understands where the money goes and who it's really serving. That's why I'm running — and why every point of this platform is rooted in the actual budget, not campaign talking points.
+  </p>
+
+  <div class="data-callout">
+    <div class="data-callout-item">
+      <div class="num">1 in 3</div>
+      <div class="label">London-area households experiencing food insecurity — above the Ontario average</div>
+      <div class="source">Middlesex-London Health Unit, Dec. 2025</div>
+    </div>
+    <div class="data-callout-item">
+      <div class="num">80%</div>
+      <div class="label">Rise in renters accessing food banks since 2019-20 as housing costs soar</div>
+      <div class="source">London Food Coalition, 2026</div>
+    </div>
+    <div class="data-callout-item">
+      <div class="num">$926M</div>
+      <div class="label">Collected in property taxes in 2026 — 63% of the city's total operating revenue</div>
+      <div class="source">City of London 2026 Budget</div>
+    </div>
+    <div class="data-callout-item">
+      <div class="num">7%</div>
+      <div class="label">Average increase in city recreation fees — making community programs less accessible</div>
+      <div class="source">Budget Business Case #P-19</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FLAGSHIP: COMMUNITY GROCERY ── -->
+<section class="flagship">
+  <div class="flagship-inner">
+    <div class="flagship-left">
+      <p class="fl-label">Flagship Policy</p>
+      <h2>A Community Grocery Store for <em>Ward 7</em></h2>
+      <p>
+        Food prices are out of control. A single person on Ontario Works receives $832 a month, but an average London rent is $1,032 and a basic monthly food basket costs $418. The math doesn't work. We can change it.
+      </p>
+      <p>
+        I'm campaigning to bring a publicly-anchored community grocery store to Ward 7 — a model that uses city land and public support to eliminate overhead costs and pass the savings directly to residents buying food. This isn't a charity or a food bank. It's a neighbourhood grocery store that puts community before profit.
+      </p>
+      <p>
+        In New York City, Mayor Zohran Mamdani has already begun implementing this exact model — city-owned land, private operator, no rent, no property taxes, groceries at affordable prices. London can lead in Ontario the same way New York is leading in the United States. Ward 7 can be where it starts here.
+      </p>
+    </div>
+
+    <div class="flagship-right">
+      <div class="how-it-works">
+        <h3>How the Model Works</h3>
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-text">
+            <h4>City or Municipally-Owned Land</h4>
+            <p>The store operates on city-held or partnered land in Ward 7, eliminating the rent and property tax burden that drives up grocery prices.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-text">
+            <h4>Community Operator with Price Standards</h4>
+            <p>A co-operative, non-profit, or community operator runs the store under a mandate to sell staples at wholesale or near-cost prices.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-text">
+            <h4>Revenue & Cost-Recovery for the City</h4>
+            <p>A lease arrangement or economic development structure allows the city to recover costs over time — reducing the net burden on taxpayers while delivering real affordability.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-text">
+            <h4>Jobs & Local Sourcing</h4>
+            <p>Prioritize local suppliers, living wages for workers, and integration with the London Food Coalition's existing rescue and distribution network.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="comparisons-box">
+        <h3>Precedents That Work</h3>
+        <p><strong style="color: var(--accent)">NYC (2026):</strong> Mayor Mamdani has allocated $70 million for five city-owned stores, eliminating rent and property taxes to lower grocery prices across boroughs.</p>
+        <p><strong style="color: var(--accent)">Co-op Models:</strong> Worker and consumer co-operatives across Canada have demonstrated that community-controlled grocery retail is operationally viable and builds local wealth.</p>
+        <p><strong style="color: var(--accent)">The London Case:</strong> With the city already spending millions supporting housing through LMCH, food retail is the logical next frontier for public intervention in affordability.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BUDGET REALITY SECTION ── -->
+<section class="budget-reality">
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <div class="section-title-group">
+      <p class="section-label">What the Budget Shows</p>
+      <h2 class="section-title">The Choices Being Made — and the Ones We Should Be Making</h2>
+      <p class="section-subtitle">The 2026 budget isn't just numbers — it's priorities. Here's what's actually in it and what I would push to change.</p>
+    </div>
+  </div>
+
+  <div class="budget-grid">
+    <div class="budget-item problem">
+      <span class="budget-item-tag">Problem</span>
+      <h3>Recreation Fees Up 7% on Average</h3>
+      <p>
+        City Council directed a 7% average fee increase on recreation and sport services to generate $1.5 million in revenue. That means families in Ward 7 pay more to access community centres, arenas, and pools — exactly the spaces that are supposed to bring people together regardless of income.
+      </p>
+      <p class="dollar">Budget Case #P-19 — $1.52M savings to city, at residents' expense</p>
+    </div>
+
+    <div class="budget-item solution">
+      <span class="budget-item-tag">My Position</span>
+      <h3>Protect Recreation Access as a Public Good</h3>
+      <p>
+        Recreation programs should not be priced out of reach for working families. I will advocate for income-scaled fees — where higher-income users subsidize access for lower-income residents — rather than across-the-board hikes that disproportionately hurt Ward 7 households.
+      </p>
+    </div>
+
+    <div class="budget-item problem">
+      <span class="budget-item-tag">Problem</span>
+      <h3>Climate Change Reserve Fund Eliminated</h3>
+      <p>
+        The city has eliminated its $192,000 annual contribution to the Climate Change Reserve Fund as a budget-cutting measure. This fund paid for emissions reduction projects and helped unlock grant funding. Ward 7 residents will live with the consequences of delayed climate action.
+      </p>
+      <p class="dollar">Budget Case #P-24 — saves $192K/yr, risks millions in grant leverage</p>
+    </div>
+
+    <div class="budget-item solution">
+      <span class="budget-item-tag">My Position</span>
+      <h3>Restore Climate Funding, Seek Provincial Grants</h3>
+      <p>
+        Eliminating the Climate Change Reserve is short-sighted. This fund was used to leverage grants and implement the Climate Emergency Action Plan. I would push to restore the contribution and tie it to active grant applications that return more than we invest.
+      </p>
+    </div>
+
+    <div class="budget-item problem">
+      <span class="budget-item-tag">Problem</span>
+      <h3>Police Budget Growing Faster Than Housing</h3>
+      <p>
+        London Police Services' 2026 budget sits at $195.7 million — growing at 4.9% — while London & Middlesex Community Housing (LMCH) received only $1.4 million in additional support to prevent service cuts. The city's priorities are visible in these numbers.
+      </p>
+      <p class="dollar">LPS: $195.7M | LMCH additional support: $1.4M</p>
+    </div>
+
+    <div class="budget-item solution">
+      <span class="budget-item-tag">My Position</span>
+      <h3>Rebalance Toward Housing & Prevention</h3>
+      <p>
+        Stable housing prevents the downstream crises that drive up policing and emergency services costs. I will advocate at Council for proportional investment in LMCH and affordable housing, recognizing it as a more cost-effective intervention than reactive policing.
+      </p>
+    </div>
+
+    <div class="budget-item problem">
+      <span class="budget-item-tag">Problem</span>
+      <h3>Transit Cuts While Ridership Matters</h3>
+      <p>
+        A $700,000 one-time London Transit Commission budget reduction has been approved. For residents in Ward 7 who rely on transit to reach groceries, jobs, and services, any reduction in service reliability hits hardest.
+      </p>
+      <p class="dollar">Budget Case #P-18 — $700K cut to LTC operations</p>
+    </div>
+
+    <div class="budget-item solution">
+      <span class="budget-item-tag">My Position</span>
+      <h3>Transit Investment Is Affordability Policy</h3>
+      <p>
+        A car-free or car-limited resident cannot afford service cuts. I will oppose transit reductions and advocate for LTC investment as part of an integrated affordability agenda — because getting to a grocery store or a job without a car is not a luxury, it's a necessity.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRIORITIES ── -->
+<section class="priorities-section">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <div class="section-title-group">
+      <p class="section-label">Full Platform</p>
+      <h2 class="section-title">What I'm Running On</h2>
+      <p class="section-subtitle">Five interconnected commitments for a Ward 7 that works for everyone — not just those at the top.</p>
+    </div>
+  </div>
+
+  <div class="priorities-list">
+
+    <div class="priority-item">
+      <div class="priority-counter">01</div>
+      <div class="priority-content">
+        <h3>Community Grocery &amp; Food Sovereignty</h3>
+        <p>
+          Launch a pilot community grocery store in Ward 7 using publicly-held or partnered land to eliminate rent and tax overhead and sell food at near-cost prices. Partner with the London Food Coalition, local farmers, and co-operative operators. Bring a motion to Council to explore city-owned food retail as part of London's affordability strategy — the way cities across North America are now doing. Food access is a right, not a market outcome.
+        </p>
+      </div>
+      <div class="priority-tag">Flagship</div>
+    </div>
+
+    <div class="priority-item">
+      <div class="priority-counter">02</div>
+      <div class="priority-content">
+        <h3>Property Tax Fairness &amp; Revenue Alternatives</h3>
+        <p>
+          With property taxes already projected to grow 3.4% in 2026 and average 6% annually through 2027, the burden on Ward 7 homeowners and renters is real. I will push the city to develop non-tax revenue streams — including community enterprise models like the grocery store — and advocate for development charges that ensure growth pays for growth, rather than loading costs onto existing residents. Long-term, the community grocery generates city revenue that can help hold down property tax increases.
+        </p>
+      </div>
+      <div class="priority-tag">Fiscal</div>
+    </div>
+
+    <div class="priority-item">
+      <div class="priority-counter">03</div>
+      <div class="priority-content">
+        <h3>Affordable Housing &amp; LMCH Support</h3>
+        <p>
+          London and Middlesex Community Housing is under serious financial pressure — rising property taxes on the homes it owns are eating into its ability to maintain services. I will advocate for full and sustainable LMCH funding at Council, and push for more ambitious affordable housing targets as part of the capital plan. The 2026 budget puts only $1.4 million toward stabilizing LMCH. That is nowhere near enough given the scale of London's housing crisis.
+        </p>
+      </div>
+      <div class="priority-tag">Housing</div>
+    </div>
+
+    <div class="priority-item">
+      <div class="priority-counter">04</div>
+      <div class="priority-content">
+        <h3>Transit Access &amp; Active Transportation</h3>
+        <p>
+          Public transit is infrastructure for people who don't own cars — disproportionately lower-income residents, seniors, students, and newcomers. Opposing transit cuts and advocating for route frequency and reliability in Ward 7 is part of a coherent affordability agenda. So is safe cycling infrastructure and pedestrian investment, which reduces the cost of living for people who don't want or can't afford to own a vehicle.
+        </p>
+      </div>
+      <div class="priority-tag">Mobility</div>
+    </div>
+
+    <div class="priority-item">
+      <div class="priority-counter">05</div>
+      <div class="priority-content">
+        <h3>Climate Action &amp; Neighbourhood Resilience</h3>
+        <p>
+          Eliminating the Climate Change Reserve Fund contribution is a false economy. Climate inaction costs more than climate action — in emergency repairs, health impacts, and lost grant opportunities. I will push to restore climate funding, implement the Climate Emergency Action Plan in Ward 7, and advocate for green retrofits of social housing that lower energy costs for LMCH tenants. The communities that suffer most from climate disasters are the same communities that suffer most from affordability crises — that connection must shape our budget decisions.
+        </p>
+      </div>
+      <div class="priority-tag">Climate</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── VISION ── -->
+<section class="vision">
+  <p class="vision-quote">
+    "When the market fails to put food on the table,<br>
+    <strong>the city has both the power and the obligation to step in.</strong>"
+  </p>
+  <p class="vision-attribution">— Platform Commitment, Ward 7 City Council 2026</p>
+</section>
+
+<!-- ── ADDITIONAL POLICIES ── -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div class="section-title-group">
+      <p class="section-label">Ward 7 Specific Commitments</p>
+      <h2 class="section-title">What I'll Do From Day One at Council</h2>
+      <p class="section-subtitle">Beyond the big policies, here are the specific things I will push for in Council chambers on behalf of Ward 7 residents.</p>
+    </div>
+  </div>
+
+  <div class="policy-grid">
+
+    <div class="policy-card">
+      <div class="card-icon">🏘️</div>
+      <div class="card-title">Neighbourhood Infrastructure Equity</div>
+      <div class="card-body">
+        The city's road reconstruction program was reduced as a budget-saving measure. I will advocate for Ward 7's fair share of road, sidewalk, and streetlight renewal investment — ensuring older neighbourhoods aren't the ones whose streets fall into disrepair.
+      </div>
+      <div class="card-evidence">Budget Case #P-6: Local Road Reconstruction Program reduced to save budget.</div>
+    </div>
+
+    <div class="policy-card">
+      <div class="card-icon">📚</div>
+      <div class="card-title">Library Access as Community Infrastructure</div>
+      <div class="card-body">
+        Two new library branches — including a South West Library — have been deferred to 2027. Libraries are not luxuries. They are community hubs, employment resources, and digital access points. I will push to ensure branch expansion stays on schedule and reaches underserved areas.
+      </div>
+      <div class="card-evidence">Budget Case #P-15: New North West and South West library branches deferred.</div>
+    </div>
+
+    <div class="policy-card">
+      <div class="card-icon">🌳</div>
+      <div class="card-title">Urban Forestry &amp; Green Neighbourhoods</div>
+      <div class="card-body">
+        The city is considering reducing tree planting grants as a cost-saving measure. Urban tree canopy is a proven equity issue — wealthier neighbourhoods have more trees, cooler streets, and better air quality. Ward 7 deserves green investment, not green cuts.
+      </div>
+      <div class="card-evidence">Budget Case #P-22: Urban Forestry tree planting grants under consideration for reduction.</div>
+    </div>
+
+    <div class="policy-card">
+      <div class="card-icon">💬</div>
+      <div class="card-title">Transparent Budget Engagement</div>
+      <div class="card-body">
+        The city's resident satisfaction survey is being cut to save money. Ward 7 residents deserve more engagement, not less. I will hold regular ward budget briefings where I present what the city is spending and where I voted — in plain language, not bureaucratic documents.
+      </div>
+      <div class="card-evidence">Budget Case #P-12: Resident satisfaction survey being reduced in frequency.</div>
+    </div>
+
+    <div class="policy-card">
+      <div class="card-icon">♻️</div>
+      <div class="card-title">Waste &amp; Composting for All</div>
+      <div class="card-body">
+        The city has paused its green bin pilot for multi-residential buildings — a program that disproportionately affects renters and apartment dwellers. I will push to resume and expand green bin collection to all housing types in Ward 7, reducing waste and creating organic material for local agriculture.
+      </div>
+      <div class="card-evidence">Budget Case #P-8: Multi-residential Green Bin pilot stopped.</div>
+    </div>
+
+    <div class="policy-card">
+      <div class="card-icon">🤝</div>
+      <div class="card-title">Health Unit Funding</div>
+      <div class="card-body">
+        The Middlesex-London Health Unit is facing a debt retirement challenge and operating funding pressure. The same health unit that documented London's worsening food insecurity depends on stable city support. I will advocate for full and stable MLHU funding as a basic public health investment.
+      </div>
+      <div class="card-evidence">Budget Cases #P-2 & #P-3: MLHU debt and operating funding pressure.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FOOTER CTA ── -->
+<section class="footer-cta">
+  <h2>Ward 7 Deserves Better.<br>Let's Build It Together.</h2>
+  <p>
+    This platform was built by reading the budget, listening at doors, and taking seriously the idea that city government can actually improve people's lives. Join the campaign.
+  </p>
+  <div class="cta-buttons">
+    <button class="btn btn-light">Volunteer</button>
+    <button class="btn btn-outline">Donate</button>
+    <button class="btn btn-outline">Contact Me</button>
+  </div>
+</section>
+
+<div class="footnote-bar">
+  All budget figures sourced from City of London 2026 Annual Budget Update (Adopted, February 2026) · Food insecurity data: Middlesex-London Health Unit, December 2025 · NYC grocery model: Mayor's Office of NYC, April 2026
+</div>
+
+</body>
+</html>
