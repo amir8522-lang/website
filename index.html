@@ -1155,5 +1155,62 @@
   Budget figures: City of London 2026 Annual Budget Update (Adopted, Feb. 2026) · North BRT: CBC London, Jan. 21, 2026 · Sunningdale Road: Province of Ontario/City of London, Aug. 2025 · Library deferral: Budget Case #P-15 · LMCH: Budget Case #P-1 · Corlon subdivision: City of London Planning Committee, Aug. 2024 · Urban Forestry: Budget Case #P-22
 </div>
 
+<!-- VOLUNTEER MODAL -->
+<div id="modal-volunteer" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:1000; align-items:center; justify-content:center;">
+  <div style="background:#F5F0E8; max-width:520px; width:90%; padding:48px; position:relative; border-radius:2px;">
+    <button onclick="closeModal('modal-volunteer')" style="position:absolute; top:16px; right:20px; background:none; border:none; font-size:22px; cursor:pointer; color:#3A3A3A;">&times;</button>
+    <p style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#C8102E; margin-bottom:12px;">Get Involved</p>
+    <h3 style="font-family:'Playfair Display',serif; font-size:28px; font-weight:700; margin-bottom:24px; color:#1A1A1A;">Volunteer for Ward 7</h3>
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="hidden" name="_subject" value="New Volunteer — Ward 7 Campaign">
+      <div style="margin-bottom:16px;">
+        <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px; color:#3A3A3A;">Full Name</label>
+        <input type="text" name="name" required style="width:100%; padding:12px; border:1px solid rgba(200,16,46,0.25); background:#fff; font-family:'DM Sans',sans-serif; font-size:14px; border-radius:2px;">
+      </div>
+      <div style="margin-bottom:16px;">
+        <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px; color:#3A3A3A;">Email Address</label>
+        <input type="email" name="email" required style="width:100%; padding:12px; border:1px solid rgba(200,16,46,0.25); background:#fff; font-family:'DM Sans',sans-serif; font-size:14px; border-radius:2px;">
+      </div>
+      <div style="margin-bottom:16px;">
+        <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px; color:#3A3A3A;">Phone (optional)</label>
+        <input type="tel" name="phone" style="width:100%; padding:12px; border:1px solid rgba(200,16,46,0.25); background:#fff; font-family:'DM Sans',sans-serif; font-size:14px; border-radius:2px;">
+      </div>
+      <div style="margin-bottom:24px;">
+        <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px; color:#3A3A3A;">How would you like to help?</label>
+        <select name="interest" style="width:100%; padding:12px; border:1px solid rgba(200,16,46,0.25); background:#fff; font-family:'DM Sans',sans-serif; font-size:14px; border-radius:2px;">
+          <option value="">Select an option</option>
+          <option value="canvassing">Door-to-door canvassing</option>
+          <option value="phones">Phone banking</option>
+          <option value="signs">Lawn signs</option>
+          <option value="events">Events and community meetings</option>
+          <option value="social">Social media</option>
+          <option value="other">Other / Not sure yet</option>
+        </select>
+      </div>
+      <button type="submit" style="width:100%; background:#C8102E; color:#F5F0E8; border:none; padding:14px; font-family:'DM Sans',sans-serif; font-size:14px; font-weight:600; letter-spacing:0.05em; cursor:pointer; border-radius:2px;">Submit</button>
+    </form>
+  </div>
+</div>
+
+  <script>
+  function openModal(id) {
+    const m = document.getElementById(id);
+    m.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    const m = document.getElementById(id);
+    m.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  // Close if user clicks the dark backdrop (outside the box)
+  document.addEventListener('click', function(e) {
+    ['modal-volunteer'].forEach(function(id) {
+      const m = document.getElementById(id);
+      if (e.target === m) closeModal(id);
+    });
+  });
+</script>
+  
 </body>
 </html>
