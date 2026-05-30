@@ -1147,7 +1147,7 @@
   <div class="cta-buttons">
     <button class="btn btn-light" onclick="openModal('modal-volunteer')">Volunteer</button>
     <button class="btn btn-outline">Donate</button>
-    <button class="btn btn-outline">Contact Me</button>
+    <button class="btn btn-outline" onclick="openModal('modal-contact')">Contact Me</button>
   </div>
 </section>
 
@@ -1192,6 +1192,93 @@
   </div>
 </div>
 
+  <!-- CONTACT MODAL -->
+<div id="modal-contact" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:1000; align-items:center; justify-content:center; padding:20px 0; overflow-y:auto;">
+  <div style="background:#F5F0E8; max-width:520px; width:90%; padding:48px; position:relative; border-radius:2px; margin:auto;">
+    <button onclick="closeModal('modal-contact')" style="position:absolute; top:16px; right:20px; background:none; border:none; font-size:22px; cursor:pointer; color:#3A3A3A;">&times;</button>
+    <p style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#C8102E; margin-bottom:12px;">Contact</p>
+    <h3 style="font-family:'Playfair Display',serif; font-size:28px; font-weight:700; margin-bottom:8px; color:#1A1A1A;">What Are You Seeing in Ward 7?</h3>
+    <p style="font-size:14px; color:#7A7060; margin-bottom:28px; line-height:1.6;">I'm speaking with residents across the ward to understand what's actually affecting people. Submit anonymously if you prefer — I read every submission.</p>
+
+    <form action="https://formspree.io/f/xpqnljww" method="POST">
+      <input type="hidden" name="_subject" value="Resident Contact — Ward 7 Campaign">
+
+      <!-- Name + Email side by side on wider screens, stacked on mobile -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;">
+        <div>
+          <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px; color:#3A3A3A;">Name <span style="color:#7A7060; font-weight:400;">(optional)</span></label>
+          <input type="text" name="name" placeholder="Your name" style="width:100%; padding:12px; border:1px solid rgba(200,16,46,0.25); background:#fff; font-family:'DM Sans',sans-serif; font-size:14px; border-radius:2px; box-sizing:border-box;">
+        </div>
+        <div>
+          <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px; color:#3A3A3A;">Email <span style="color:#7A7060; font-weight:400;">(optional)</span></label>
+          <input type="email" name="email" placeholder="your@email.com" style="width:100%; padding:12px; border:1px solid rgba(200,16,46,0.25); background:#fff; font-family:'DM Sans',sans-serif; font-size:14px; border-radius:2px; box-sizing:border-box;">
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px;">
+        <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px; color:#3A3A3A;">Your neighbourhood <span style="color:#7A7060; font-weight:400;">(optional)</span></label>
+        <input type="text" name="location" placeholder="e.g. Sunningdale, Medway, Stoneybrook, Hyde Park" style="width:100%; padding:12px; border:1px solid rgba(200,16,46,0.25); background:#fff; font-family:'DM Sans',sans-serif; font-size:14px; border-radius:2px; box-sizing:border-box;">
+      </div>
+
+      <div style="margin-bottom:16px;">
+        <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px; color:#3A3A3A;">What's the issue? <span style="color:#C8102E;">*</span></label>
+        <textarea name="concern" rows="5" required placeholder="Describe what you're seeing or experiencing. Specific details — street names, how long it's been happening, who else is affected — are helpful." style="width:100%; padding:12px; border:1px solid rgba(200,16,46,0.25); background:#fff; font-family:'DM Sans',sans-serif; font-size:14px; border-radius:2px; resize:vertical; box-sizing:border-box;"></textarea>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;">
+        <div>
+          <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px; color:#3A3A3A;">Category</label>
+          <select name="category" style="width:100%; padding:12px; border:1px solid rgba(200,16,46,0.25); background:#fff; font-family:'DM Sans',sans-serif; font-size:14px; border-radius:2px; box-sizing:border-box;">
+            <option value="">Select...</option>
+            <option>Roads & Infrastructure</option>
+            <option>Transit</option>
+            <option>Housing</option>
+            <option>Parks & Environment</option>
+            <option>Public Safety</option>
+            <option>Food Access</option>
+            <option>Development & Planning</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px; color:#3A3A3A;">Scale of impact</label>
+          <select name="scale" style="width:100%; padding:12px; border:1px solid rgba(200,16,46,0.25); background:#fff; font-family:'DM Sans',sans-serif; font-size:14px; border-radius:2px; box-sizing:border-box;">
+            <option value="">Select...</option>
+            <option>Just me</option>
+            <option>A few households</option>
+            <option>My neighbourhood</option>
+            <option>Much of the ward</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:24px;">
+        <div>
+          <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px; color:#3A3A3A;">Reported to the city before?</label>
+          <select name="reported" style="width:100%; padding:12px; border:1px solid rgba(200,16,46,0.25); background:#fff; font-family:'DM Sans',sans-serif; font-size:14px; border-radius:2px; box-sizing:border-box;">
+            <option value="">Select...</option>
+            <option>No</option>
+            <option>Yes — no response</option>
+            <option>Yes — resolved</option>
+            <option>Yes — ongoing</option>
+          </select>
+        </div>
+        <div>
+          <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px; color:#3A3A3A;">OK to follow up?</label>
+          <select name="followup" style="width:100%; padding:12px; border:1px solid rgba(200,16,46,0.25); background:#fff; font-family:'DM Sans',sans-serif; font-size:14px; border-radius:2px; box-sizing:border-box;">
+            <option value="">Select...</option>
+            <option>Yes, by email</option>
+            <option>Yes, by phone</option>
+            <option>No — anonymous only</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" style="width:100%; background:#C8102E; color:#F5F0E8; border:none; padding:14px; font-family:'DM Sans',sans-serif; font-size:14px; font-weight:600; letter-spacing:0.05em; cursor:pointer; border-radius:2px;">Submit</button>
+    </form>
+  </div>
+</div>
+
   <script>
   function openModal(id) {
     const m = document.getElementById(id);
@@ -1205,7 +1292,7 @@
   }
   // Close if user clicks the dark backdrop (outside the box)
   document.addEventListener('click', function(e) {
-    ['modal-volunteer'].forEach(function(id) {
+    ['modal-volunteer', 'modal-contact'].forEach(function(id) {
       const m = document.getElementById(id);
       if (e.target === m) closeModal(id);
     });
