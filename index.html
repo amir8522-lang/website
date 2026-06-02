@@ -1168,7 +1168,7 @@
   </p>
   <div class="cta-buttons">
     <button class="btn btn-light" onclick="openModal('modal-volunteer')">Volunteer</button>
-    <button class="btn btn-outline">Donate</button>
+    <button class="btn btn-outline" onclick="openModal('modal-donate')">Donate</button>
     <button class="btn btn-outline" onclick="openModal('modal-contact')">Contact Me</button>
   </div>
 </section>
@@ -1301,7 +1301,98 @@
   </div>
 </div>
 
-  <script>
+  <!-- DONATE MODAL -->
+<!-- Add 'modal-donate' to the backdrop click handler in your existing <script> block -->
+<div id="modal-donate" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:1000; align-items:center; justify-content:center; padding:20px 0; overflow-y:auto;">
+  <div style="background:#F5F0E8; max-width:520px; width:90%; padding:48px; position:relative; border-radius:2px; margin:auto;">
+    <button onclick="closeModal('modal-donate')" style="position:absolute; top:16px; right:20px; background:none; border:none; font-size:22px; cursor:pointer; color:#3A3A3A;">&times;</button>
+ 
+    <p style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#C8102E; margin-bottom:12px;">Support the Campaign</p>
+    <h3 style="font-family:'Playfair Display',serif; font-size:28px; font-weight:700; margin-bottom:8px; color:#1A1A1A;">Donate to Ward 7</h3>
+    <p style="font-size:14px; color:#7A7060; margin-bottom:28px; line-height:1.6;">Contributions are accepted by e-transfer. Fill out this form, then send your e-transfer using the instructions below. Every contribution is recorded in accordance with the <em>Municipal Elections Act, 1996</em>.</p>
+ 
+    <!-- Legal compliance notice -->
+    <div style="background:#fff; border-left:3px solid #C8102E; padding:14px 16px; margin-bottom:28px; border-radius:0 2px 2px 0;">
+      <p style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:#C8102E; margin:0 0 8px 0;">Ontario Law — Please Read</p>
+      <ul style="font-size:12px; color:#3A3A3A; line-height:1.8; margin:0; padding-left:18px;">
+        <li>Only <strong>Ontario residents</strong> (individuals) may contribute. Corporations, trade unions, and out-of-province donors are not eligible.</li>
+        <li>Maximum contribution: <strong>$1,200 per donor</strong> to this campaign.</li>
+        <li>Contributions over $25 cannot be cash — e-transfer satisfies this requirement.</li>
+        <li>Your name and address will appear in the campaign's public financial statement.</li>
+        <li>You will receive a campaign contribution receipt (not a tax receipt).</li>
+      </ul>
+    </div>
+ 
+    <!-- Donor info form -->
+    <form action="https://formspree.io/f/xrejdkdk" method="POST">
+      <input type="hidden" name="_subject" value="Donation — Ward 7 Campaign">
+ 
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;">
+        <div>
+          <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px; color:#3A3A3A;">First Name <span style="color:#C8102E;">*</span></label>
+          <input type="text" name="first_name" required style="width:100%; padding:12px; border:1px solid rgba(200,16,46,0.25); background:#fff; font-family:'DM Sans',sans-serif; font-size:14px; border-radius:2px; box-sizing:border-box;">
+        </div>
+        <div>
+          <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px; color:#3A3A3A;">Last Name <span style="color:#C8102E;">*</span></label>
+          <input type="text" name="last_name" required style="width:100%; padding:12px; border:1px solid rgba(200,16,46,0.25); background:#fff; font-family:'DM Sans',sans-serif; font-size:14px; border-radius:2px; box-sizing:border-box;">
+        </div>
+      </div>
+ 
+      <div style="margin-bottom:16px;">
+        <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px; color:#3A3A3A;">Email Address <span style="color:#C8102E;">*</span></label>
+        <input type="email" name="email" required placeholder="your@email.com" style="width:100%; padding:12px; border:1px solid rgba(200,16,46,0.25); background:#fff; font-family:'DM Sans',sans-serif; font-size:14px; border-radius:2px; box-sizing:border-box;">
+        <p style="font-size:11px; color:#7A7060; margin:5px 0 0 0;">Your receipt will be sent to this address.</p>
+      </div>
+ 
+      <div style="margin-bottom:16px;">
+        <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px; color:#3A3A3A;">Home Address <span style="color:#C8102E;">*</span></label>
+        <input type="text" name="address" required placeholder="Street address" style="width:100%; padding:12px; border:1px solid rgba(200,16,46,0.25); background:#fff; font-family:'DM Sans',sans-serif; font-size:14px; border-radius:2px; box-sizing:border-box; margin-bottom:8px;">
+        <div style="display:grid; grid-template-columns:2fr 1fr; gap:8px;">
+          <input type="text" name="city" required placeholder="City" style="padding:12px; border:1px solid rgba(200,16,46,0.25); background:#fff; font-family:'DM Sans',sans-serif; font-size:14px; border-radius:2px; box-sizing:border-box;">
+          <input type="text" name="postal_code" required placeholder="Postal code" style="padding:12px; border:1px solid rgba(200,16,46,0.25); background:#fff; font-family:'DM Sans',sans-serif; font-size:14px; border-radius:2px; box-sizing:border-box;">
+        </div>
+        <p style="font-size:11px; color:#7A7060; margin:5px 0 0 0;">Required by the <em>Municipal Elections Act</em>. Must be an Ontario address.</p>
+      </div>
+ 
+      <div style="margin-bottom:16px;">
+        <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px; color:#3A3A3A;">Donation Amount <span style="color:#C8102E;">*</span></label>
+        <!-- Quick-select buttons -->
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:8px;">
+          <button type="button" onclick="setAmount(25)" style="padding:10px 0; border:1px solid rgba(200,16,46,0.35); background:#fff; font-family:'DM Sans',sans-serif; font-size:13px; font-weight:500; color:#3A3A3A; border-radius:2px; cursor:pointer;">$25</button>
+          <button type="button" onclick="setAmount(50)" style="padding:10px 0; border:1px solid rgba(200,16,46,0.35); background:#fff; font-family:'DM Sans',sans-serif; font-size:13px; font-weight:500; color:#3A3A3A; border-radius:2px; cursor:pointer;">$50</button>
+          <button type="button" onclick="setAmount(100)" style="padding:10px 0; border:1px solid rgba(200,16,46,0.35); background:#fff; font-family:'DM Sans',sans-serif; font-size:13px; font-weight:500; color:#3A3A3A; border-radius:2px; cursor:pointer;">$100</button>
+          <button type="button" onclick="setAmount(250)" style="padding:10px 0; border:1px solid rgba(200,16,46,0.35); background:#fff; font-family:'DM Sans',sans-serif; font-size:13px; font-weight:500; color:#3A3A3A; border-radius:2px; cursor:pointer;">$250</button>
+        </div>
+        <div style="position:relative;">
+          <span style="position:absolute; left:12px; top:50%; transform:translateY(-50%); font-size:14px; color:#7A7060; font-family:'DM Sans',sans-serif;">$</span>
+          <input type="number" id="donate-amount" name="amount" min="1" max="1200" required placeholder="Other amount" style="width:100%; padding:12px 12px 12px 24px; border:1px solid rgba(200,16,46,0.25); background:#fff; font-family:'DM Sans',sans-serif; font-size:14px; border-radius:2px; box-sizing:border-box;">
+        </div>
+        <p style="font-size:11px; color:#7A7060; margin:5px 0 0 0;">Maximum $1,200 per donor per the <em>Municipal Elections Act</em>.</p>
+      </div>
+ 
+      <div style="margin-bottom:24px;">
+        <label style="display:block; font-size:13px; font-weight:500; margin-bottom:6px; color:#3A3A3A;">I confirm that: <span style="color:#C8102E;">*</span></label>
+        <label style="display:flex; align-items:flex-start; gap:10px; font-size:13px; color:#3A3A3A; line-height:1.6; cursor:pointer;">
+          <input type="checkbox" name="eligibility_confirm" required style="margin-top:3px; accent-color:#C8102E; flex-shrink:0;">
+          I am an individual normally resident in Ontario, and this contribution is from my own personal funds. I am not contributing on behalf of a corporation, trade union, or any organization.
+        </label>
+      </div>
+ 
+      <!-- E-transfer instructions (shown after form context) -->
+      <div style="background:#fff; border:1px solid rgba(200,16,46,0.2); padding:16px; border-radius:2px; margin-bottom:24px;">
+        <p style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:#C8102E; margin:0 0 10px 0;">Step 2 — Send Your E-Transfer</p>
+        <p style="font-size:13px; color:#3A3A3A; margin:0 0 6px 0; line-height:1.6;">After submitting this form, send your e-transfer to:</p>
+        <p style="font-family:'DM Mono',monospace; font-size:15px; font-weight:600; color:#1A1A1A; margin:0 0 10px 0;">kamrul@afmkamrulahsan.ca</p>
+        <p style="font-size:12px; color:#7A7060; margin:0; line-height:1.6;">Use your full name as the message/note on the transfer so it can be matched to this form. You'll receive a contribution receipt by email once it's processed.</p>
+      </div>
+ 
+      <button type="submit" style="width:100%; background:#C8102E; color:#F5F0E8; border:none; padding:14px; font-family:'DM Sans',sans-serif; font-size:14px; font-weight:600; letter-spacing:0.05em; cursor:pointer; border-radius:2px;">Submit Donor Info</button>
+      <p style="font-size:11px; color:#7A7060; text-align:center; margin:12px 0 0 0;">Submitting this form does not complete your donation. Your e-transfer is the actual contribution.</p>
+    </form>
+  </div>
+</div>
+
+<script>
   function openModal(id) {
     const m = document.getElementById(id);
     m.style.display = 'flex';
@@ -1312,9 +1403,21 @@
     m.style.display = 'none';
     document.body.style.overflow = '';
   }
-  // Close if user clicks the dark backdrop (outside the box)
+  function setAmount(val) {
+    document.getElementById('donate-amount').value = val;
+    // Highlight active preset button
+    document.querySelectorAll('#modal-donate button[type="button"]').forEach(function(btn) {
+      btn.style.background = '#fff';
+      btn.style.color = '#3A3A3A';
+      btn.style.borderColor = 'rgba(200,16,46,0.35)';
+    });
+    event.target.style.background = '#C8102E';
+    event.target.style.color = '#F5F0E8';
+    event.target.style.borderColor = '#C8102E';
+  }
+  // Close on backdrop click
   document.addEventListener('click', function(e) {
-    ['modal-volunteer', 'modal-contact'].forEach(function(id) {
+    ['modal-volunteer', 'modal-contact', 'modal-donate'].forEach(function(id) {
       const m = document.getElementById(id);
       if (e.target === m) closeModal(id);
     });
