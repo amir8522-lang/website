@@ -1436,78 +1436,451 @@
     <button class="modal-close" onclick="closeModal('modal-donate')">&times;</button>
     <div class="modal-label">Support the Campaign</div>
     <h3 class="modal-title">Donate to Ward 7</h3>
-    <p class="modal-desc">Contributions are accepted by e-transfer. Fill out this form, then send your e-transfer. Every contribution is recorded under the <em>Municipal Elections Act, 1996</em>.</p>
-
+    <p class="modal-desc">Every contribution is recorded under the <em>Municipal Elections Act, 1996</em>.</p>
+ 
     <div class="legal-notice">
       <div class="legal-notice-label">Ontario Law — Please Read</div>
       <ul>
         <li>Only <strong>Ontario residents</strong> (individuals) may contribute. Corporations and trade unions are not eligible.</li>
         <li>Maximum contribution: <strong>$1,200 per donor</strong> to this campaign.</li>
-        <li>Contributions over $25 cannot be cash — e-transfer satisfies this requirement.</li>
+        <li>Contributions over $25 cannot be cash — card or e-transfer both satisfy this requirement.</li>
         <li>Your name and address will appear in the campaign's public financial statement.</li>
         <li>You will receive a campaign contribution receipt (not a tax receipt).</li>
       </ul>
     </div>
-
-    <form action="https://formspree.io/f/xpqnljww" method="POST">
-      <input type="hidden" name="_subject" value="Donation — Ward 7 Campaign">
-      <div class="field-row">
-        <div class="field">
-          <label>First Name <span style="color:var(--red)">*</span></label>
-          <input type="text" name="first_name" required>
+ 
+    <!-- PAYMENT METHOD TABS -->
+    <div class="pay-tabs">
+      <button class="pay-tab active" onclick="switchTab('card', this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        Credit / Debit Card
+      </button>
+      <button class="pay-tab" onclick="switchTab('etransfer', this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        E-Transfer
+      </button>
+    </div>
+ 
+    <!-- ===== TAB: CARD PAYMENT ===== -->
+    <div id="tab-card" class="tab-panel active">
+      <form id="card-payment-form">
+        <div class="field-row">
+          <div class="field">
+            <label>First Name <span style="color:var(--red)">*</span></label>
+            <input type="text" id="card-first-name" required>
+          </div>
+          <div class="field">
+            <label>Last Name <span style="color:var(--red)">*</span></label>
+            <input type="text" id="card-last-name" required>
+          </div>
         </div>
         <div class="field">
-          <label>Last Name <span style="color:var(--red)">*</span></label>
-          <input type="text" name="last_name" required>
+          <label>Email Address <span style="color:var(--red)">*</span></label>
+          <input type="email" id="card-email" required placeholder="your@email.com">
         </div>
-      </div>
-      <div class="field">
-        <label>Email Address <span style="color:var(--red)">*</span></label>
-        <input type="email" name="email" required placeholder="your@email.com">
-      </div>
-      <div class="field">
-        <label>Home Address <span style="color:var(--red)">*</span></label>
-        <input type="text" name="address" required placeholder="Street address" style="margin-bottom:6px">
-        <div style="display:grid;grid-template-columns:2fr 1fr;gap:6px">
-          <input type="text" name="city" required placeholder="City" style="padding:11px 12px;border:1px solid rgba(200,16,46,0.18);background:#fff;font-family:'DM Sans',sans-serif;font-size:13px;border-radius:2px;box-sizing:border-box;">
-          <input type="text" name="postal" required placeholder="Postal code" style="padding:11px 12px;border:1px solid rgba(200,16,46,0.18);background:#fff;font-family:'DM Sans',sans-serif;font-size:13px;border-radius:2px;box-sizing:border-box;">
+        <div class="field">
+          <label>Home Address <span style="color:var(--red)">*</span></label>
+          <input type="text" id="card-address" required placeholder="Street address" style="margin-bottom:6px">
+          <div style="display:grid;grid-template-columns:2fr 1fr;gap:6px">
+            <input type="text" id="card-city" required placeholder="City" class="sub-input">
+            <input type="text" id="card-postal" required placeholder="Postal code" class="sub-input">
+          </div>
         </div>
-      </div>
-      <div class="field">
-        <label>Donation Amount <span style="color:var(--red)">*</span></label>
-        <div class="amt-presets">
-          <button type="button" class="amt-btn" onclick="setAmount(25,this)">$25</button>
-          <button type="button" class="amt-btn" onclick="setAmount(50,this)">$50</button>
-          <button type="button" class="amt-btn" onclick="setAmount(100,this)">$100</button>
-          <button type="button" class="amt-btn" onclick="setAmount(250,this)">$250</button>
+ 
+        <div class="field">
+          <label>Donation Amount <span style="color:var(--red)">*</span></label>
+          <div class="amt-presets">
+            <button type="button" class="amt-btn" onclick="setAmount('card', 25, this)">$25</button>
+            <button type="button" class="amt-btn" onclick="setAmount('card', 50, this)">$50</button>
+            <button type="button" class="amt-btn" onclick="setAmount('card', 100, this)">$100</button>
+            <button type="button" class="amt-btn" onclick="setAmount('card', 250, this)">$250</button>
+          </div>
+          <input type="number" id="card-amount" min="1" max="1200" required placeholder="Or enter another amount" class="amount-input">
+          <p style="font-size:11px;color:var(--muted);margin-top:4px;">Maximum $1,200 per donor per the <em>Municipal Elections Act</em>.</p>
         </div>
-        <input type="number" id="donate-amount" name="amount" min="1" max="1200" required placeholder="Or enter another amount" style="width:100%;padding:11px 12px;border:1px solid rgba(200,16,46,0.18);background:#fff;font-family:'DM Sans',sans-serif;font-size:13px;border-radius:2px;box-sizing:border-box;">
-        <p style="font-size:11px;color:var(--muted);margin-top:4px;">Maximum $1,200 per donor per the <em>Municipal Elections Act</em>.</p>
-      </div>
-
-      <div class="etransfer-box">
-        <div class="etransfer-label">Send Your E-Transfer To</div>
-        <div class="etransfer-email">kamrul@afmkamrulahsan.ca</div>
-        <p>Use your full name as the note on the transfer. You'll receive a contribution receipt by email once it's processed.</p>
-      </div>
-
-      <label class="checkbox-label">
-        <input type="checkbox" name="eligibility_confirm" required>
-        I am an individual normally resident in Ontario, and this contribution is from my own personal funds. I am not contributing on behalf of a corporation, trade union, or any organization.
-      </label>
-
-      <button type="submit" class="btn-form">Submit Donor Info</button>
-      <p class="form-note">Submitting this form does not complete your donation. Your e-transfer is the actual contribution.</p>
-    </form>
+ 
+        <div class="field">
+          <label>Card Details <span style="color:var(--red)">*</span></label>
+          <!-- Square Web Payments SDK mounts here -->
+          <div id="card-container" class="square-card-container"></div>
+          <div id="card-errors" class="card-errors" style="display:none;"></div>
+        </div>
+ 
+        <label class="checkbox-label">
+          <input type="checkbox" id="card-eligibility" required>
+          I am an individual normally resident in Ontario, and this contribution is from my own personal funds. I am not contributing on behalf of a corporation, trade union, or any organization.
+        </label>
+ 
+        <button type="submit" id="card-submit-btn" class="btn-form">
+          <span id="card-btn-text">Pay by Card</span>
+          <span id="card-btn-spinner" class="spinner" style="display:none;"></span>
+        </button>
+        <p id="card-result-msg" style="display:none;font-size:13px;margin-top:10px;text-align:center;"></p>
+        <p class="form-note">Your card will be charged immediately. A contribution receipt will be emailed to you.</p>
+      </form>
+    </div>
+ 
+    <!-- ===== TAB: E-TRANSFER ===== -->
+    <div id="tab-etransfer" class="tab-panel">
+      <form action="https://formspree.io/f/xpqnljww" method="POST">
+        <input type="hidden" name="_subject" value="Donation — Ward 7 Campaign">
+        <div class="field-row">
+          <div class="field">
+            <label>First Name <span style="color:var(--red)">*</span></label>
+            <input type="text" name="first_name" required>
+          </div>
+          <div class="field">
+            <label>Last Name <span style="color:var(--red)">*</span></label>
+            <input type="text" name="last_name" required>
+          </div>
+        </div>
+        <div class="field">
+          <label>Email Address <span style="color:var(--red)">*</span></label>
+          <input type="email" name="email" required placeholder="your@email.com">
+        </div>
+        <div class="field">
+          <label>Home Address <span style="color:var(--red)">*</span></label>
+          <input type="text" name="address" required placeholder="Street address" style="margin-bottom:6px">
+          <div style="display:grid;grid-template-columns:2fr 1fr;gap:6px">
+            <input type="text" name="city" required placeholder="City" class="sub-input">
+            <input type="text" name="postal" required placeholder="Postal code" class="sub-input">
+          </div>
+        </div>
+        <div class="field">
+          <label>Donation Amount <span style="color:var(--red)">*</span></label>
+          <div class="amt-presets">
+            <button type="button" class="amt-btn" onclick="setAmount('etransfer', 25, this)">$25</button>
+            <button type="button" class="amt-btn" onclick="setAmount('etransfer', 50, this)">$50</button>
+            <button type="button" class="amt-btn" onclick="setAmount('etransfer', 100, this)">$100</button>
+            <button type="button" class="amt-btn" onclick="setAmount('etransfer', 250, this)">$250</button>
+          </div>
+          <input type="number" id="etransfer-amount" name="amount" min="1" max="1200" required placeholder="Or enter another amount" class="amount-input">
+          <p style="font-size:11px;color:var(--muted);margin-top:4px;">Maximum $1,200 per donor per the <em>Municipal Elections Act</em>.</p>
+        </div>
+ 
+        <div class="etransfer-box">
+          <div class="etransfer-label">Send Your E-Transfer To</div>
+          <div class="etransfer-email">kamrul@afmkamrulahsan.ca</div>
+          <p>Use your full name as the note on the transfer. You'll receive a contribution receipt by email once it's processed.</p>
+        </div>
+ 
+        <label class="checkbox-label">
+          <input type="checkbox" name="eligibility_confirm" required>
+          I am an individual normally resident in Ontario, and this contribution is from my own personal funds. I am not contributing on behalf of a corporation, trade union, or any organization.
+        </label>
+ 
+        <button type="submit" class="btn-form">Submit Donor Info</button>
+        <p class="form-note">Submitting this form does not complete your donation. Your e-transfer is the actual contribution.</p>
+      </form>
+    </div>
   </div>
 </div>
-
-
+ 
+<!-- =====================================================================
+     STYLES — add these to your existing <style> block
+     ===================================================================== -->
+<style>
+  /* --- Payment Method Tabs --- */
+  .pay-tabs {
+    display: flex;
+    gap: 6px;
+    margin: 18px 0 20px;
+    border-bottom: 2px solid rgba(200,16,46,0.12);
+    padding-bottom: 0;
+  }
+  .pay-tab {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 18px 12px;
+    border: none;
+    background: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted, #888);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: color 0.18s, border-color 0.18s;
+    border-radius: 0;
+  }
+  .pay-tab:hover {
+    color: var(--red, #c8102e);
+  }
+  .pay-tab.active {
+    color: var(--red, #c8102e);
+    border-bottom-color: var(--red, #c8102e);
+    font-weight: 600;
+  }
+ 
+  /* --- Tab Panels --- */
+  .tab-panel {
+    display: none;
+  }
+  .tab-panel.active {
+    display: block;
+  }
+ 
+  /* --- Square card container --- */
+  .square-card-container {
+    border: 1px solid rgba(200,16,46,0.18);
+    border-radius: 2px;
+    padding: 12px;
+    background: #fff;
+    min-height: 48px;
+  }
+ 
+  /* --- Card errors --- */
+  .card-errors {
+    margin-top: 6px;
+    padding: 8px 12px;
+    background: #fff5f5;
+    border: 1px solid rgba(200,16,46,0.3);
+    border-radius: 2px;
+    font-size: 12px;
+    color: var(--red, #c8102e);
+  }
+ 
+  /* --- Shared sub-inputs --- */
+  .sub-input {
+    padding: 11px 12px;
+    border: 1px solid rgba(200,16,46,0.18);
+    background: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    border-radius: 2px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+ 
+  /* --- Amount input --- */
+  .amount-input {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid rgba(200,16,46,0.18);
+    background: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    border-radius: 2px;
+    box-sizing: border-box;
+  }
+ 
+  /* --- Loading spinner --- */
+  .spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    vertical-align: middle;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+ 
+<!-- =====================================================================
+     SCRIPTS
+     ===================================================================== -->
+ 
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  SQUARE SETUP — replace the two placeholder values below    ║
+  ║                                                              ║
+  ║  1. Switch the SDK src to production when you go live:       ║
+  ║     SANDBOX:    https://sandbox.web.squarecdn.com/v1/square.js ║
+  ║     PRODUCTION: https://web.squarecdn.com/v1/square.js       ║
+  ║                                                              ║
+  ║  2. Replace YOUR_SQUARE_APP_ID with your Square             ║
+  ║     Application ID (Developer Dashboard → your app)         ║
+  ║                                                              ║
+  ║  3. Replace YOUR_SQUARE_LOCATION_ID with your Location ID   ║
+  ║     (Developer Dashboard → your app → Locations)            ║
+  ║                                                              ║
+  ║  4. Set up a server-side endpoint at /process-card-payment   ║
+  ║     to call the Square Payments API with the sourceId token. ║
+  ║     Square's quickstart guide: https://developer.squareup.com/docs/web-payments/take-card-payment ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+<script src="https://sandbox.web.squarecdn.com/v1/square.js"></script>
+ 
 <script>
+  // ── Square credentials (replace before going live) ──────────────
+  const SQUARE_APP_ID      = 'YOUR_SQUARE_APP_ID';       // ← replace
+  const SQUARE_LOCATION_ID = 'YOUR_SQUARE_LOCATION_ID';  // ← replace
+  // ────────────────────────────────────────────────────────────────
+ 
+  // TAB SWITCHING
+  function switchTab(tab, btn) {
+    document.querySelectorAll('.pay-tab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + tab).classList.add('active');
+  }
+ 
+  // AMOUNT PRESETS — scoped to each tab
+  function setAmount(tab, val, btn) {
+    const inputId = tab === 'card' ? 'card-amount' : 'etransfer-amount';
+    document.getElementById(inputId).value = val;
+    // Deselect all preset buttons within the same tab panel
+    const panel = document.getElementById('tab-' + tab);
+    panel.querySelectorAll('.amt-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+  }
+ 
+  // SQUARE WEB PAYMENTS SDK INIT
+  let squareCard; // holds the mounted card element
+ 
+  async function initSquare() {
+    if (!window.Square) {
+      console.warn('Square SDK not loaded.');
+      return;
+    }
+    try {
+      const payments = window.Square.payments(SQUARE_APP_ID, SQUARE_LOCATION_ID);
+      squareCard = await payments.card({
+        style: {
+          '.input-container': {
+            borderColor: 'rgba(200,16,46,0.18)',
+            borderRadius: '2px',
+          },
+          '.input-container.is-focus': {
+            borderColor: 'rgba(200,16,46,0.6)',
+          },
+          '.input-container.is-error': {
+            borderColor: '#c8102e',
+          },
+          input: {
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: '13px',
+            color: '#1a1a1a',
+          },
+          'input::placeholder': {
+            color: '#aaa',
+          },
+        }
+      });
+      await squareCard.attach('#card-container');
+    } catch (e) {
+      console.error('Square init error:', e);
+      document.getElementById('card-container').innerHTML =
+        '<p style="color:#c8102e;font-size:13px;margin:0;">Card payment unavailable. Please use e-transfer or try again later.</p>';
+    }
+  }
+ 
+  // CARD PAYMENT FORM SUBMISSION
+  document.getElementById('card-payment-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+ 
+    const firstName = document.getElementById('card-first-name').value.trim();
+    const lastName  = document.getElementById('card-last-name').value.trim();
+    const email     = document.getElementById('card-email').value.trim();
+    const address   = document.getElementById('card-address').value.trim();
+    const city      = document.getElementById('card-city').value.trim();
+    const postal    = document.getElementById('card-postal').value.trim();
+    const amount    = parseFloat(document.getElementById('card-amount').value);
+    const eligible  = document.getElementById('card-eligibility').checked;
+    const errBox    = document.getElementById('card-errors');
+    const resultMsg = document.getElementById('card-result-msg');
+ 
+    errBox.style.display = 'none';
+    resultMsg.style.display = 'none';
+ 
+    // Client-side validation
+    if (!firstName || !lastName || !email || !address || !city || !postal) {
+      errBox.textContent = 'Please fill in all required fields.';
+      errBox.style.display = 'block';
+      return;
+    }
+    if (!amount || amount < 1 || amount > 1200) {
+      errBox.textContent = 'Please enter a donation amount between $1 and $1,200.';
+      errBox.style.display = 'block';
+      return;
+    }
+    if (!eligible) {
+      errBox.textContent = 'You must confirm your eligibility to contribute.';
+      errBox.style.display = 'block';
+      return;
+    }
+    if (!squareCard) {
+      errBox.textContent = 'Card payment is not ready. Please refresh and try again.';
+      errBox.style.display = 'block';
+      return;
+    }
+ 
+    // Show loading state
+    const submitBtn  = document.getElementById('card-submit-btn');
+    const btnText    = document.getElementById('card-btn-text');
+    const btnSpinner = document.getElementById('card-btn-spinner');
+    submitBtn.disabled  = true;
+    btnText.textContent = 'Processing…';
+    btnSpinner.style.display = 'inline-block';
+ 
+    try {
+      // Tokenize the card with Square
+      const result = await squareCard.tokenize();
+ 
+      if (result.status === 'OK') {
+        const sourceId = result.token;
+ 
+        // ── Send token + donor info to YOUR server ──────────────────
+        // You need a backend endpoint that calls the Square Payments
+        // API to actually charge the card. Never call the Payments API
+        // directly from the browser (it would expose your access token).
+        //
+        // Example fetch to your server:
+        const serverResponse = await fetch('/process-card-payment', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            sourceId,
+            amountCents: Math.round(amount * 100),
+            currency: 'CAD',
+            donor: { firstName, lastName, email, address, city, postal }
+          })
+        });
+ 
+        if (serverResponse.ok) {
+          // Success
+          document.getElementById('card-payment-form').style.display = 'none';
+          resultMsg.style.color = '#1a7a3c';
+          resultMsg.innerHTML =
+            '✓ Thank you, ' + firstName + '! Your $' + amount.toFixed(2) +
+            ' contribution has been received. A receipt will be emailed to ' + email + '.';
+          resultMsg.style.display = 'block';
+        } else {
+          const err = await serverResponse.json().catch(() => ({}));
+          errBox.textContent = err.message || 'Payment failed. Please try again or use e-transfer.';
+          errBox.style.display = 'block';
+        }
+ 
+      } else {
+        // Tokenization errors (e.g. invalid card number)
+        const messages = (result.errors || []).map(err => err.message).join(' ');
+        errBox.textContent = messages || 'Could not read card details. Please check and try again.';
+        errBox.style.display = 'block';
+      }
+ 
+    } catch (err) {
+      console.error('Payment error:', err);
+      errBox.textContent = 'An unexpected error occurred. Please try again or use e-transfer.';
+      errBox.style.display = 'block';
+    } finally {
+      submitBtn.disabled  = false;
+      btnText.textContent = 'Pay by Card';
+      btnSpinner.style.display = 'none';
+    }
+  });
+ 
   // MODALS
   function openModal(id) {
     document.getElementById(id).classList.add('open');
     document.body.style.overflow = 'hidden';
+    // Init Square the first time the donate modal opens
+    if (id === 'modal-donate' && !squareCard) {
+      initSquare();
+    }
   }
   function closeModal(id) {
     document.getElementById(id).classList.remove('open');
@@ -1516,22 +1889,15 @@
   document.addEventListener('click', function(e) {
     ['modal-volunteer','modal-concerns','modal-donate'].forEach(function(id) {
       var m = document.getElementById(id);
-      if (e.target === m) closeModal(id);
+      if (m && e.target === m) closeModal(id);
     });
   });
-
-  // ACCORDION — universal toggle
+ 
+  // ACCORDION
   function toggleEl(id) {
     document.getElementById(id).classList.toggle('open');
   }
-
-  // DONATE AMOUNTS
-  function setAmount(val, btn) {
-    document.getElementById('donate-amount').value = val;
-    document.querySelectorAll('.amt-btn').forEach(function(b) { b.classList.remove('selected'); });
-    btn.classList.add('selected');
-  }
-
+ 
   // MOBILE NAV
   document.getElementById('hamburger').addEventListener('click', function() {
     document.getElementById('mobile-nav').classList.toggle('open');
@@ -1539,13 +1905,12 @@
   function closeMobileNav() {
     document.getElementById('mobile-nav').classList.remove('open');
   }
-
+ 
   // NAV SHADOW ON SCROLL
   window.addEventListener('scroll', function() {
     document.getElementById('main-nav').style.boxShadow =
       window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,0.35)' : 'none';
   });
 </script>
-
 </body>
 </html>
