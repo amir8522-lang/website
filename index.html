@@ -49,7 +49,7 @@
 
   .nav-name {
     font-family: 'Playfair Display', serif;
-    font-size: 16px;
+    font-size: 22px;
     font-weight: 700;
     color: var(--cream);
     letter-spacing: -0.01em;
@@ -782,8 +782,114 @@
   .checkbox-label input { margin-top: 3px; accent-color: var(--red); flex-shrink: 0; }
   .form-note { font-size: 11px; color: var(--muted); text-align: center; margin-top: 8px; line-height: 1.5; }
 
+  /* BIO / MEET THE CANDIDATE */
+  .bio-section {
+    background: var(--cream);
+    padding: 80px 60px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .bio-grid {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 72px;
+    align-items: start;
+  }
+
+  .bio-image-col { position: relative; }
+
+  .bio-img-wrap {
+    position: sticky;
+    top: 80px;
+  }
+
+  .bio-img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display: block;
+    border: 1px solid var(--border);
+  }
+
+  .bio-img-placeholder::before {
+    content: '';
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background: #e8e2d8;
+    border: 2px dashed rgba(26,26,26,0.15);
+  }
+
+  .bio-img-placeholder .bio-img { display: none; }
+
+  .bio-img-wrap::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -8px;
+    right: -8px;
+    width: 60%;
+    height: 60%;
+    border-right: 3px solid var(--red);
+    border-bottom: 3px solid var(--red);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .bio-img-caption {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-top: 12px;
+    text-transform: uppercase;
+  }
+
+  .bio-content-col { padding-top: 8px; }
+
+  .bio-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 14px;
+  }
+
+  .bio-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 46px);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--dark);
+    margin-bottom: 28px;
+    letter-spacing: -0.02em;
+  }
+
+  .bio-heading em {
+    color: var(--red);
+    font-style: italic;
+  }
+
+  .bio-body p {
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--mid);
+    margin-bottom: 18px;
+  }
+
+  .bio-body p:last-child { margin-bottom: 0; }
+
   /* RESPONSIVE */
   @media (max-width: 768px) {
+    .bio-section { padding: 56px 24px; }
+    .bio-grid { grid-template-columns: 1fr; gap: 36px; }
+    .bio-img-wrap { position: static; }
+    .bio-img { aspect-ratio: 4 / 3; }
+    .bio-img-wrap::after { display: none; }
+  }
+
+
     nav { padding: 0 24px; }
     .nav-links { display: none; }
     .nav-hamburger { display: flex; }
@@ -812,6 +918,7 @@
 <nav id="main-nav">
   <a href="#top" class="nav-name">Kamrul <span>Ahsan</span></a>
   <ul class="nav-links">
+    <li><a href="#meet">Meet Kamrul</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#issues">Issues</a></li>
     <li><a href="#platform">Platform</a></li>
@@ -825,6 +932,7 @@
 </nav>
 
 <div class="mobile-nav" id="mobile-nav">
+  <a href="#meet" onclick="closeMobileNav()">Meet Kamrul</a>
   <a href="#about" onclick="closeMobileNav()">About</a>
   <a href="#issues" onclick="closeMobileNav()">Issues</a>
   <a href="#platform" onclick="closeMobileNav()">Platform</a>
@@ -846,6 +954,7 @@
     <div class="hero-cta">
       <button class="btn btn-primary" onclick="openModal('modal-volunteer')">Volunteer</button>
       <button class="btn btn-ghost" onclick="openModal('modal-donate')">Donate</button>
+      <button class="btn btn-ghost" onclick="openModal('modal-lawnsign')">Host a Lawn Sign</button>
       <button class="btn btn-ghost" onclick="openModal('modal-concerns')">Share Your Concerns</button>
     </div>
   </div>
@@ -904,7 +1013,31 @@
   </div>
 </section>
 
+<!-- MEET THE CANDIDATE -->
+<section class="bio-section" id="meet">
+  <div class="bio-grid">
+    <div class="bio-image-col">
+      <div class="bio-img-wrap">
+        <!-- Replace src with your actual doorknocking photo -->
+        <img src="campaign1.jpg" alt="Kamrul Ahsan doorknocking in Ward 7" class="bio-img" onerror="this.parentElement.classList.add('bio-img-placeholder')">
+        <div class="bio-img-caption">Doorknocking in Ward 7 — [Month, Year]</div>
+      </div>
+    </div>
+    <div class="bio-content-col">
+      <div class="bio-label">Meet the Candidate</div>
+      <h2 class="bio-heading">Kamrul <em>Ahsan</em></h2>
+      <div class="bio-body">
+        <p>I'm an engineer, business owner, and community organizer who has spent over 20 years working in manufacturing, international trade, and grassroots civic engagement — most of that time in London and Middlesex County. Ward 7 is where I live, and it's the community I want to get right.</p>
+        <p>As Director of BCB Metal Inc. in London, I work daily in supply chain, sourcing, and international trade across the construction, automotive, and heavy equipment sectors. I've held senior roles at Catalent Pharma Solutions in Strathroy and Research In Motion (BlackBerry) in Cambridge. I understand how industrial policy, infrastructure investment, and local planning decisions affect the people who work in this region.</p>
+        <p>On the organizing side, I currently serve as Vice Chair in Middlesex–London, and I was Campaign Manager for Kent Kannan in the last federal election — coordinating volunteers, running canvassing operations, and building the kind of ground-level understanding of what residents actually care about that you can only get by showing up at the door. I've also been involved in youth soccer and cricket programs in the community for years.</p>
+        <p>I'm running for Ward 7 because the decisions being made right now — on transit, on development charges, on the northwest library — will shape this part of London for decades. I have the technical background to read a budget case and the organizing experience to hold council accountable. That combination is what Ward 7 needs at this moment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ABOUT -->
+
 <section class="about-section" id="about">
   <div class="about-grid">
     <div class="about-left">
@@ -1266,6 +1399,7 @@
   </p>
   <div class="cta-buttons">
     <button class="btn btn-light" onclick="openModal('modal-volunteer')">Volunteer</button>
+    <button class="btn btn-outline" onclick="openModal('modal-lawnsign')">Host a Lawn Sign</button>
     <button class="btn btn-outline" onclick="openModal('modal-donate')">Donate</button>
     <button class="btn btn-outline" onclick="openModal('modal-concerns')">Share Your Concerns</button>
   </div>
@@ -1312,6 +1446,51 @@
   Budget figures: City of London 2026 Annual Budget Update (Adopted, Feb. 2026) &middot; North BRT: CBC London, Jan. 21, 2026 &middot; Sunningdale Road: Province of Ontario/City of London, Aug. 2025 &middot; Library deferral: Budget Case #P-15 &middot; LMCH: Budget Case #P-1 &middot; Corlon subdivision: City of London Planning Committee, Aug. 2024 &middot; Urban Forestry: Budget Case #P-22
 </div>
 
+
+<!-- MODAL: LAWN SIGN -->
+<div id="modal-lawnsign" class="modal-backdrop">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-lawnsign')">&times;</button>
+    <div class="modal-label">Show Your Support</div>
+    <h3 class="modal-title">Host a Lawn Sign</h3>
+    <p class="modal-desc">A sign on your lawn tells your neighbours where you stand. Fill out the form below and we'll arrange delivery and installation — no work required on your end.</p>
+    <form action="YOUR_FORMSPREE_LINK_HERE" method="POST">
+      <input type="hidden" name="_subject" value="Lawn Sign Request — Ward 7 Campaign">
+      <div class="field-row">
+        <div class="field">
+          <label>First Name <span style="color:var(--red)">*</span></label>
+          <input type="text" name="first_name" required>
+        </div>
+        <div class="field">
+          <label>Last Name <span style="color:var(--red)">*</span></label>
+          <input type="text" name="last_name" required>
+        </div>
+      </div>
+      <div class="field">
+        <label>Email Address <span style="color:var(--red)">*</span></label>
+        <input type="email" name="email" required placeholder="your@email.com">
+      </div>
+      <div class="field">
+        <label>Phone Number <span style="color:var(--muted);font-weight:400">(optional)</span></label>
+        <input type="tel" name="phone" placeholder="For delivery coordination">
+      </div>
+      <div class="field">
+        <label>Street Address <span style="color:var(--red)">*</span></label>
+        <input type="text" name="address" required placeholder="Street address">
+        <div style="display:grid;grid-template-columns:2fr 1fr;gap:6px;margin-top:6px">
+          <input type="text" name="city" required placeholder="City" class="sub-input" value="London">
+          <input type="text" name="postal" required placeholder="Postal code" class="sub-input">
+        </div>
+      </div>
+      <div class="field">
+        <label>Any notes? <span style="color:var(--muted);font-weight:400">(optional)</span></label>
+        <textarea name="notes" rows="3" placeholder="e.g. best time for delivery, gate code, front vs. back yard preference"></textarea>
+      </div>
+      <button type="submit" class="btn-form">Request a Lawn Sign</button>
+      <p class="form-note">We'll be in touch to confirm delivery. Signs remain your property and can be removed at any time.</p>
+    </form>
+  </div>
+</div>
 
 <!-- MODAL: VOLUNTEER -->
 <div id="modal-volunteer" class="modal-backdrop">
@@ -1650,7 +1829,7 @@
     document.body.style.overflow = '';
   }
   document.addEventListener('click', function(e) {
-    ['modal-volunteer','modal-concerns','modal-donate'].forEach(function(id) {
+    ['modal-volunteer','modal-concerns','modal-donate','modal-lawnsign'].forEach(function(id) {
       var m = document.getElementById(id);
       if (m && e.target === m) closeModal(id);
     });
