@@ -1532,78 +1532,102 @@
 <div id="modal-concerns" class="modal-backdrop">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('modal-concerns')">&times;</button>
-    <div class="modal-label">Share Your Concerns</div>
-    <h3 class="modal-title">What Are You Seeing in Ward 7?</h3>
-    <p class="modal-desc">I'm speaking with residents across the ward to understand what's actually affecting people. Submit anonymously if you prefer — I read every submission.</p>
-    <form action="https://formspree.io/f/xpqnljww" method="POST">
-      <input type="hidden" name="_subject" value="Resident Concern — Ward 7 Campaign">
+    <div class="modal-label">Your Voice for Ward 7</div>
+    <h3 class="modal-title">Share Your Concerns</h3>
+    <p class="modal-desc">This survey is confidential and used only for community engagement. Your input helps guide improvements for a stronger, safer, better-connected Ward 7.</p>
+
+    <div id="concern-form-wrap">
       <div class="field-row">
         <div class="field">
-          <label>Name <span style="color:var(--muted);font-weight:400">(optional)</span></label>
-          <input type="text" name="name" placeholder="Your name">
+          <label>Name <span style="color:var(--red)">*</span></label>
+          <input type="text" id="cf-name" placeholder="Your name">
         </div>
         <div class="field">
-          <label>Email <span style="color:var(--muted);font-weight:400">(optional)</span></label>
-          <input type="email" name="email" placeholder="your@email.com">
+          <label>Email <span style="color:var(--red)">*</span></label>
+          <input type="email" id="cf-email" placeholder="your@email.com">
         </div>
       </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Phone <span style="color:var(--muted);font-weight:400">(optional)</span></label>
+          <input type="tel" id="cf-phone" placeholder="e.g. 519-555-0100">
+        </div>
+        <div class="field">
+          <label>Street Name / Number <span style="color:var(--muted);font-weight:400">(optional)</span></label>
+          <input type="text" id="cf-street" placeholder="e.g. 123 Main St">
+        </div>
+      </div>
+
       <div class="field">
-        <label>Your neighbourhood <span style="color:var(--muted);font-weight:400">(optional)</span></label>
-        <input type="text" name="location" placeholder="e.g. Sunningdale, Medway, Hyde Park">
+        <label>What is the biggest challenge facing Ward 7 residents? <span style="color:var(--red)">*</span></label>
+        <select id="cf-challenge">
+          <option value="">Select...</option>
+          <option value="High property taxes">High property taxes</option>
+          <option value="Cost of living and affordability">Cost of living and affordability</option>
+          <option value="Traffic and road safety">Traffic and road safety</option>
+          <option value="Lack of affordable housing">Lack of affordable housing</option>
+          <option value="Public safety and crime">Public safety and crime</option>
+          <option value="Public transit issues">Public transit issues</option>
+          <option value="Lack of community programs">Lack of community programs</option>
+          <option value="Other">Other</option>
+        </select>
       </div>
+
       <div class="field">
-        <label>What's the issue? <span style="color:var(--red)">*</span></label>
-        <textarea name="concern" rows="5" required placeholder="Describe what you're seeing. Street names, how long it's been happening, who else is affected — specific details help."></textarea>
+        <label>Which group needs more support and services? <span style="color:var(--red)">*</span></label>
+        <select id="cf-group">
+          <option value="">Select...</option>
+          <option value="Children and families">Children and families</option>
+          <option value="Youth and students">Youth and students</option>
+          <option value="Seniors">Seniors</option>
+          <option value="Newcomers and immigrants">Newcomers and immigrants</option>
+          <option value="People with disabilities">People with disabilities</option>
+          <option value="Low-income residents">Low-income residents</option>
+          <option value="Small business owners">Small business owners</option>
+        </select>
       </div>
-      <div class="field-row">
-        <div class="field">
-          <label>Category</label>
-          <select name="category">
-            <option value="">Select...</option>
-            <option>Roads &amp; Infrastructure</option>
-            <option>Transit</option>
-            <option>Housing</option>
-            <option>Parks &amp; Environment</option>
-            <option>Public Safety</option>
-            <option>Food Access</option>
-            <option>Development &amp; Planning</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Scale of impact</label>
-          <select name="scale">
-            <option value="">Select...</option>
-            <option>Just me</option>
-            <option>A few households</option>
-            <option>My neighbourhood</option>
-            <option>Much of the ward</option>
-          </select>
-        </div>
+
+      <div class="field">
+        <label>If you could ask your Councillor to solve one issue immediately, what would it be? <span style="color:var(--red)">*</span></label>
+        <textarea id="cf-priority" rows="4" placeholder="Be as specific as you like — street names, how long it's been an issue, who's affected..."></textarea>
       </div>
-      <div class="field-row">
-        <div class="field">
-          <label>Reported to the city before?</label>
-          <select name="reported">
-            <option value="">Select...</option>
-            <option>No</option>
-            <option>Yes — no response</option>
-            <option>Yes — resolved</option>
-            <option>Yes — ongoing</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>OK to follow up?</label>
-          <select name="followup">
-            <option value="">Select...</option>
-            <option>Yes, by email</option>
-            <option>Yes, by phone</option>
-            <option>No — anonymous only</option>
-          </select>
-        </div>
+
+      <div class="field">
+        <label>Would you like to stay informed about Ward 7 updates? <span style="color:var(--red)">*</span></label>
+        <select id="cf-updates">
+          <option value="">Select...</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
       </div>
-      <button type="submit" class="btn-form">Submit</button>
-    </form>
+
+      <div class="field">
+        <label>How would you prefer to communicate with your Councillor?</label>
+        <select id="cf-comms">
+          <option value="">Select...</option>
+          <option value="Email updates/newsletters">Email updates / newsletters</option>
+          <option value="Social media">Social media (Facebook, Instagram, LinkedIn)</option>
+          <option value="Community town hall meetings">Community town hall meetings</option>
+          <option value="Phone calls">Phone calls</option>
+          <option value="Text messages/SMS">Text messages / SMS</option>
+          <option value="Door-to-door conversations">Door-to-door conversations</option>
+          <option value="Community events">Community events and local gatherings</option>
+          <option value="Online surveys">Online surveys and feedback forms</option>
+          <option value="Through a dedicated website">Through a dedicated website</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div id="cf-error" style="color:var(--red);font-size:0.9rem;display:none;margin-bottom:0.5rem;">Please fill in all required fields.</div>
+      <button class="btn-form" onclick="submitConcernForm()">Submit</button>
+    </div>
+
+    <!-- Success message (hidden until submitted) -->
+    <div id="cf-success" style="display:none;text-align:center;padding:2rem 0;">
+      <div style="font-size:2rem;margin-bottom:1rem;">✅</div>
+      <h3 style="margin-bottom:0.5rem;">Thank you!</h3>
+      <p>Your response has been received. I read every submission and appreciate you taking the time to share your voice.</p>
+    </div>
   </div>
 </div>
 
@@ -1848,6 +1872,50 @@
     document.getElementById('main-nav').style.boxShadow =
       window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,0.35)' : 'none';
   });
+
+  // paste this inside your existing <script> block, not as a new one
+
+function submitConcernForm() {
+  const name      = document.getElementById('cf-name').value.trim();
+  const email     = document.getElementById('cf-email').value.trim();
+  const phone     = document.getElementById('cf-phone').value.trim();
+  const street    = document.getElementById('cf-street').value.trim();
+  const challenge = document.getElementById('cf-challenge').value;
+  const group     = document.getElementById('cf-group').value;
+  const priority  = document.getElementById('cf-priority').value.trim();
+  const updates   = document.getElementById('cf-updates').value;
+  const comms     = document.getElementById('cf-comms').value;
+
+  if (!name || !email || !challenge || !group || !priority || !updates) {
+    document.getElementById('cf-error').style.display = 'block';
+    return;
+  }
+  document.getElementById('cf-error').style.display = 'none';
+
+  const formData = new FormData();
+  formData.append('entry.2005620554', name);
+  formData.append('entry.1045781291', email);
+  formData.append('entry.1166974658', phone);
+  formData.append('entry.839337160',  street);
+  formData.append('entry.1065046570', challenge);
+  formData.append('entry.1166974658', group);
+  formData.append('entry.839337161',  priority);
+  formData.append('entry.839337162',  updates);
+  formData.append('entry.839337163',  comms);
+
+  const FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSdMbURp-HneSnR5oTDt5Qaml1mxjJw6JPQsvKvriyycxR2vTw/formResponse';
+
+  fetch(FORM_ACTION, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: formData
+  }).then(() => {
+    document.getElementById('concern-form-wrap').style.display = 'none';
+    document.getElementById('cf-success').style.display = 'block';
+  }).catch(() => {
+    alert('Something went wrong. Please try again.');
+  });
+}
 </script>
 </body>
 </html>
