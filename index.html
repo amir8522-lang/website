@@ -1663,30 +1663,99 @@
     </div>
 
     <!-- ===== TAB: CARD PAYMENT ===== -->
-    <div id="tab-card" class="tab-panel active">
-      <p style="font-size:14px;color:#444;margin:0 0 18px;">You'll be taken to a secure Square page to enter your card details and complete your donation. Your information is protected by Square's payment security.</p>
+<div id="tab-card" class="tab-panel active">
+  <p style="font-size:14px;color:#444;margin:0 0 18px;">
+    Please fill out your information below. Once submitted, you'll be taken to
+    Square's secure payment page to complete your donation by card. Ontario law
+    requires us to collect this information for every contribution.
+  </p>
 
-      <div class="square-card-preview">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:#c8102e"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-        <div>
-          <div style="font-weight:600;font-size:14px;margin-bottom:2px;">Secure Card Payment via Square</div>
-          <div style="font-size:12px;color:#666;">Opens in a new tab · Accepts Visa, Mastercard, Amex</div>
-        </div>
+  <div id="card-form-wrap">
+    <div class="field-row">
+      <div class="field">
+        <label>First Name <span style="color:var(--red)">*</span></label>
+        <input type="text" id="cf2-first" placeholder="Jane">
       </div>
-
-      <label class="checkbox-label" style="margin-bottom:16px;">
-        <input type="checkbox" id="card-eligibility">
-        I am an individual normally resident in Ontario, and this contribution is from my own personal funds. I am not contributing on behalf of a corporation, trade union, or any organization.
-      </label>
-
-      <div id="card-eligibility-error" style="display:none;font-size:12px;color:#c8102e;margin:-10px 0 12px;"></div>
-
-      <button class="btn-form" onclick="goToSquare()">
-        Donate by Card
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-left:6px;vertical-align:middle"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-      </button>
-      <p class="form-note">You will be redirected to Square's secure payment page in a new tab.</p>
+      <div class="field">
+        <label>Last Name <span style="color:var(--red)">*</span></label>
+        <input type="text" id="cf2-last" placeholder="Smith">
+      </div>
     </div>
+
+    <div class="field">
+      <label>Email Address <span style="color:var(--red)">*</span></label>
+      <input type="email" id="cf2-email" placeholder="your@email.com">
+    </div>
+
+    <div class="field">
+      <label>Home Address <span style="color:var(--red)">*</span></label>
+      <input type="text" id="cf2-street" placeholder="Street address" style="margin-bottom:6px">
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:6px">
+        <input type="text" id="cf2-city" placeholder="City" class="sub-input">
+        <input type="text" id="cf2-postal" placeholder="Postal code" class="sub-input">
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Donation Amount <span style="color:var(--red)">*</span></label>
+      <div class="amt-presets">
+        <button type="button" class="amt-btn" onclick="setCardAmount(25, this)">$25</button>
+        <button type="button" class="amt-btn" onclick="setCardAmount(50, this)">$50</button>
+        <button type="button" class="amt-btn" onclick="setCardAmount(100, this)">$100</button>
+        <button type="button" class="amt-btn" onclick="setCardAmount(250, this)">$250</button>
+      </div>
+      <input type="number" id="cf2-amount" min="1" max="1200"
+             placeholder="Or enter another amount" class="amount-input">
+      <p style="font-size:11px;color:var(--muted);margin-top:4px;">
+        Maximum $1,200 per donor per the <em>Municipal Elections Act</em>.
+      </p>
+    </div>
+
+    <label class="checkbox-label" style="margin-bottom:16px;">
+      <input type="checkbox" id="cf2-eligibility">
+      I am an individual normally resident in Ontario, and this contribution is
+      from my own personal funds. I am not contributing on behalf of a
+      corporation, trade union, or any organization.
+    </label>
+
+    <div id="cf2-error" style="display:none;font-size:12px;color:var(--red);margin:-10px 0 12px;"></div>
+
+    <button class="btn-form" onclick="submitCardDonor()">
+      Continue to Card Payment
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2.5"
+           style="margin-left:6px;vertical-align:middle">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+        <polyline points="15 3 21 3 21 9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+    </button>
+    <p class="form-note">
+      Your donor information is submitted first, then Square opens in a new tab
+      for secure payment. You will receive a campaign contribution receipt by
+      email. This is not a tax receipt.
+    </p>
+  </div>
+
+  <!-- Shown after successful submission -->
+  <div id="cf2-success" style="display:none;text-align:center;padding:24px 0;">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none"
+         stroke="var(--red)" stroke-width="1.5" style="margin-bottom:12px">
+      <circle cx="12" cy="12" r="10"/>
+      <polyline points="9 12 11 14 15 10"/>
+    </svg>
+    <div style="font-weight:600;font-size:16px;margin-bottom:8px;">
+      Information received — thank you!
+    </div>
+    <p style="font-size:14px;color:#444;margin-bottom:20px;">
+      A contribution receipt has been sent to your email. Your Square payment
+      tab should already be open — please complete your donation there.
+    </p>
+    <button class="btn-form" onclick="window.open(SQUARE_PAYMENT_LINK,'_blank')">
+      Re-open Square Payment Page
+    </button>
+  </div>
+</div>
 
     <!-- ===== TAB: E-TRANSFER ===== -->
     <div id="tab-etransfer" class="tab-panel">
@@ -1817,17 +1886,93 @@
   const SQUARE_PAYMENT_LINK = 'https://square.link/u/21ERGOaX'; // ← replace
   // ───────────────────────────────────────────────────────────
 
-  function goToSquare() {
-    const eligible = document.getElementById('card-eligibility').checked;
-    const errEl    = document.getElementById('card-eligibility-error');
-    if (!eligible) {
-      errEl.textContent = 'Please confirm your eligibility before continuing.';
-      errEl.style.display = 'block';
-      return;
-    }
-    errEl.style.display = 'none';
-    window.open(SQUARE_PAYMENT_LINK, '_blank');
+function submitCardDonor() {
+  const first     = document.getElementById('cf2-first').value.trim();
+  const last      = document.getElementById('cf2-last').value.trim();
+  const email     = document.getElementById('cf2-email').value.trim();
+  const street    = document.getElementById('cf2-street').value.trim();
+  const city      = document.getElementById('cf2-city').value.trim();
+  const postal    = document.getElementById('cf2-postal').value.trim();
+  const amount    = document.getElementById('cf2-amount').value.trim();
+  const eligible  = document.getElementById('cf2-eligibility').checked;
+  const errEl     = document.getElementById('cf2-error');
+
+  // Validation
+  if (!first || !last || !email || !street || !city || !postal || !amount) {
+    errEl.textContent = 'Please complete all required fields.';
+    errEl.style.display = 'block';
+    return;
   }
+  if (!eligible) {
+    errEl.textContent = 'Please confirm your eligibility before continuing.';
+    errEl.style.display = 'block';
+    return;
+  }
+  const amt = parseFloat(amount);
+  if (isNaN(amt) || amt < 1 || amt > 1200) {
+    errEl.textContent = 'Please enter a valid amount between $1 and $1,200.';
+    errEl.style.display = 'block';
+    return;
+  }
+  errEl.style.display = 'none';
+
+  // Build the Formspree payload
+  // Replace 'YOUR_FORMSPREE_ID' below with your actual Formspree form ID
+  // (same one used on the e-transfer tab, or create a separate one)
+  
+  const CARD_FORMSPREE_ID = 'https://formspree.io/f/mwvjbwzd'; // ← replace if you want a separate form
+
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('en-CA', {
+    year: 'numeric', month: 'long', day: 'numeric'
+  });
+
+  const formData = new FormData();
+  formData.append('_subject', 'Card Donation — Ward 7 Campaign');
+
+  // Formspree auto-reply: recipient is the donor
+  formData.append('_replyto', email);
+
+  // Fields that appear in your Formspree dashboard & receipt email
+  formData.append('first_name',          first);
+  formData.append('last_name',           last);
+  formData.append('email',               email);
+  formData.append('address',             street);
+  formData.append('city',                city);
+  formData.append('postal',              postal);
+  formData.append('amount',              '$' + amt.toFixed(2));
+  formData.append('payment_method',      'Credit / Debit Card (Square)');
+  formData.append('date_received',       dateStr);
+  formData.append('receipt_note',        'This is a campaign contribution receipt, NOT a tax receipt. Contributions to municipal candidates cannot be credited against provincial or federal income taxes.');
+  formData.append('eligibility_confirm', 'Confirmed — Ontario resident, personal funds only');
+
+  // Open Square immediately so the donor isn't waiting
+  window.open(SQUARE_PAYMENT_LINK, '_blank');
+
+  // Then submit donor info to Formspree in the background
+  fetch('https://formspree.io/f/' + CARD_FORMSPREE_ID, {
+    method: 'POST',
+    body: formData,
+    headers: { 'Accept': 'application/json' }
+  }).then(res => {
+    if (res.ok) {
+      document.getElementById('card-form-wrap').style.display = 'none';
+      document.getElementById('cf2-success').style.display = 'block';
+    } else {
+      alert('Your payment tab is open, but we had trouble recording your info. Please email kamrul@afmkamrulahsan.ca with your name and donation amount so we can issue your receipt manually.');
+    }
+  }).catch(() => {
+    alert('Your payment tab is open, but we had trouble recording your info. Please email kamrul@afmkamrulahsan.ca with your name and donation amount so we can issue your receipt manually.');
+  });
+}
+
+function setCardAmount(val, btn) {
+  document.getElementById('cf2-amount').value = val;
+  // Clear other preset buttons in the card tab only
+  btn.closest('.amt-presets').querySelectorAll('.amt-btn')
+     .forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+}
 
   function switchTab(tab, btn) {
     document.querySelectorAll('.pay-tab').forEach(b => b.classList.remove('active'));
