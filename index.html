@@ -793,20 +793,20 @@
     display: grid;
     grid-template-columns: 420px 1fr;
     gap: 72px;
-    align-items: center;
+    align-items: start;
   }
 
   .bio-image-col { position: relative; }
 
   .bio-img-wrap {
-    position: relative;
+    position: sticky;
     top: 80px;
   }
 
   .bio-img {
     width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: contain;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
     display: block;
     border: 1px solid var(--border);
   }
